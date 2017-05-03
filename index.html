@@ -29,11 +29,12 @@
         <button class="navBtn" targetpage="page2">Page 2</button>
         <button class="navBtn" targetpage="page3">Page 3</button>
     </div>
-    <div id="page1">
+    <div class id="page1">
       <h1>Welcome to Beerbuds!</h1>
-      Lorem ipsum dolor sit amet...
-
-      Gustav gör en test för att visa branch
+      <span id="info">Not Connected</span>
+      <button id="connect" onclick="app.setupConnection();">Reconnect</button>
+      <div id="showMessages">
+      </div>
     </div>
     <div id="page2">
       <h1>Page 2</h1>
@@ -45,5 +46,6 @@
     </div>
 
     <script src="js/main.js"></script>
+    <script src="js/mqttws.js"></script>
 </body>
 </html>
