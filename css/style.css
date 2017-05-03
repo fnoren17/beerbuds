@@ -7,3 +7,9 @@ body {
   font-family: Open-sans, sans-serif;
   font-size: 14px;
 }
+
+/* Hide all pages execpt the startpage */
+#page2,
+#page3 {
+	display: none;
+}
