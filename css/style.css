@@ -6,8 +6,13 @@ html, body {
 body {
   font-family: Open-sans, sans-serif;
   font-size: 14px;
-  text-align: left;
   background-image: url("../img/bg.jpg");
+}
+
+p {
+ 	font-size: 14px;	
+    color: black;
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 }
 
 .page{
@@ -16,6 +21,10 @@ body {
 
 #description{
 	height: 100%;
+}
+
+.signInBtn{
+	text-align: center;
 }
 
 

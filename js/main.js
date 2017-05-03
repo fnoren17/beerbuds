@@ -5,3 +5,7 @@ function login(){
 function createaccount(){
 	alert("Create Account");
 }
+
+function help(){
+	alert("Help");
+}
