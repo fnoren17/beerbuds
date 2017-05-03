@@ -1,3 +1,17 @@
+ // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyDxSvYZAvDu3U37hMZGuyxUvWfRT6WrDFc",
+        authDomain: "authentication-mobut-proj.firebaseapp.com",
+        databaseURL: "https://authentication-mobut-proj.firebaseio.com",
+        projectId: "authentication-mobut-proj",
+        storageBucket: "authentication-mobut-proj.appspot.com",
+        messagingSenderId: "209640989261"
+      };
+      firebase.initializeApp(config);
+      console.log(firebase)
+
+
+
 var provider = new firebase.auth.GoogleAuthProvider();
 
 function googleSignin() {
@@ -28,6 +42,34 @@ function googleSignout() {
    });
 }
 
+
+//Login without google
+var txtEmail = document.getElementById("txtEmail");
+var txtPassword = document.getElementById("txtPassword");
+var btnLogin = document.getElementById("btnLogin");
+var btnSignUp = document.getElementById("btnSignUp");
+var btnLogout = document.getElementById("btnLogout"); 
+
+//console.log(btnLogin)
+
+//Add login event
+
+/*FIXA*/
+btnLogin.addEventListener("click", e => {
+	//get email and pass
+	var email = txtEmail.val();
+	var pass = txtPassword.val();
+	var auth = firebase.auth();
+	//sign in
+	var promise = auth.signInWithEmailAndPassword(email, pass);
+	promise.catch(e=> console.log(e.message));
+
+})
+
+const auth = firebase.auth();
+auth.signInWithEmailAndPassword(email,pass);
+auth.createUserWithEmailAndPassword(email,pass);
+auth.onAuthStateChanged(firebaseUser => { })
 
 
 //console.log("#43")
