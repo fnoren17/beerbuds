@@ -6,15 +6,17 @@ html, body {
 body {
   font-family: Open-sans, sans-serif;
   font-size: 14px;
-  text-align: center;  
+  text-align: left;
+  background-image: url("../img/bg.jpg");
+}
+
+.page{
+	padding: 10px;
 }
 
 #description{
 	height: 100%;
 }
 
-.btn{
-  background-color: #bb010e !important;
-}
 
 
