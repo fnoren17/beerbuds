@@ -8,6 +8,37 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
 
+    <!--Firebase-->
+
+    <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyDxSvYZAvDu3U37hMZGuyxUvWfRT6WrDFc",
+        authDomain: "authentication-mobut-proj.firebaseapp.com",
+        databaseURL: "https://authentication-mobut-proj.firebaseio.com",
+        projectId: "authentication-mobut-proj",
+        storageBucket: "authentication-mobut-proj.appspot.com",
+        messagingSenderId: "209640989261"
+      };
+      firebase.initializeApp(config);
+      console.log(firebase)
+    </script>
+
+
+<!-- <script src="https://cdn.firebase.com/libs/firebaseui/1.0.1/firebaseui.js"></script>
+<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/1.0.1/firebaseui.css" />
+ -->
+   <!--  <script src="https://www.gstatic.com/firebasejs/3.7.2/firebase.js"></script> -->
+    <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase-database.js"></script>
+
+
+
+   <script src="js/firebase.js"></script>
+
+
     <!-- Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
 
@@ -17,6 +48,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 
     <!-- Bootstrap -->
+    <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 
@@ -25,8 +57,23 @@
   </head>
 <body>
     <h1>Welcome to Beerbuds!</h1>
-    Lorem ipsum dolor sit amet...testing
+    Lorem ipsum dolor sit amet...testing<br/>
+    <script>
+    //console.log(firebase)
+    //var ref = firebase.database().ref('/Users/');
+
+//console.log(ref);
+    </script>
+
+    <button onclick = "googleSignin()">Google Signin</button>
+    <button onclick = "googleSignout()">Google Signout</button>
+    <!--
+    <p id = "loginError" style="display:none">error</p>
+    email <input type="text" id="loginEmail"><br>
+    pass <input type="text" id="loginPassword"><br>
+    <button id = "loginButton">Login</button> 
     
+    -->
     <script src="js/main.js"></script>
 </body>
 </html>
