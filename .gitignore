@@ -46,3 +46,5 @@ Icon?
 Network Trash Folder
 Temporary Items
 .apdisk
+
+dir_to_ignore/bower_components
