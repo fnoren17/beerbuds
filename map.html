@@ -11,10 +11,6 @@
     <!-- Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700|Pirata+One' rel='stylesheet' type='text/css'>
 
-<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-<link rel="apple-touch-icon" sizes="72x72" href="apple-touch-icon-72x72.png">
-<link rel="apple-touch-icon" sizes="144x144" href="apple-touch-icon-144x144.png">
-<link rel="icon" type="image/png" href="android-chrome-192x192.png" sizes="192x192">
 <link rel="stylesheet" type="text/css" href="css/style.css">
 
 
@@ -24,28 +20,22 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
     <title>Map</title>
 
-    <style>
-      #map {
-        height: 100%;
-      }
-
-    </style>
-
   </head>
 <body>
    <div id="map">
-   <div id = "button">
-    <button id = marker> Jag e ülsügen </button>
-    </div>
+
+     <div id="marker">
+        <button id="beer">Jag är ölsugen</button>
+      </div>
    </div>
     
     <script>
+      var marker = document.getElementById("marker");
+      marker.index = 1;
       var markers = [];
-      var button = document.getElementById("button");
-      button.index = 1;
-      var addMarker = document.getElementById('marker');
+      var beer = document.getElementById('beer');
       
-      addMarker.addEventListener('click',function(){
+      beer.addEventListener('click',function(){
         var marker = new google.maps.Marker({
           position: map.getCenter(),
           map: map,
@@ -68,7 +58,13 @@
           zoom: 17,
           disableDefaultUI: true
           });
-      map.controls[google.maps.ControlPosition.LEFT_TOP].push(button);
+            map.controls[google.maps.ControlPosition.LEFT_TOP].push(marker);
+        
+        var userMarker = new google.maps.Marker({
+            position: setCenter(),
+            map: map,
+            icon: 'http://www.robotwoods.com/dev/misc/bluecircle.png'
+        });
       }
 
      function deleteMarkers() {
