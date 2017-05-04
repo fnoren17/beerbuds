@@ -34,13 +34,17 @@
   </head>
 <body>
    <div id="map">
-    
+   <div id = "button">
+    <button id = marker> Jag e ülsügen </button>
+    </div>
    </div>
     
     <script>
       var markers = [];
-
+      var button = document.getElementById("button");
+      button.index = 1;
       var addMarker = document.getElementById('marker');
+      
       addMarker.addEventListener('click',function(){
         var marker = new google.maps.Marker({
           position: map.getCenter(),
@@ -64,6 +68,7 @@
           zoom: 17,
           disableDefaultUI: true
           });
+      map.controls[google.maps.ControlPosition.LEFT_TOP].push(button);
       }
 
      function deleteMarkers() {
