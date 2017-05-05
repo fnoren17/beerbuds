@@ -1,3 +1,4 @@
+
 $(document).ready(function() {
 	// Track the current page, starts with page 1
 	var currentpage = '#page1';
