@@ -60,17 +60,15 @@
             <div class="page-content">
                 <div class="page">
                     <p>Have you ever wanted to drink but all of your friends want to have a sober and boring day? Don't fear, there is more people in the town who wants to drink and they want YOU to join them for a son of a bitch or two.</p>
- <div class = "googleSignIn">
-                <button onclick = "googleSignin()">Google Signin</button>
-                <button onclick = "googleSignout()">Google Signout</button>
-            </div>
-
-
+                    <div class = "googleSignIn">
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="googleSignin()">Sign In With Google</button>
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="googleSignOut()">Sign Out With Google</button>
+                    </div>
             <div class = "email/passSignIn">
-                <input id=txtEmail type = "email" placeholder = "Email">
-                <input id="txtPassword" type = "password" placeholder ="Password">
-                <button id="btnLogin" class = "btn btn-action">Login</button>
-                <button id="btnSignUp" class="btn btn-secondary">Sign Up</button>
+                <input id=txtEmail class="mdl-textfield__input" type = "email" placeholder = "Email">
+                <input id="txtPassword" class="mdl-textfield__input" type = "password" placeholder ="Password">
+                <button id="btnLogin" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Login</button>
+                <button id="btnSignUp" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Sign Up</button>
                 <button id="btnLogout" class="btn btn-action" style="display:none">Log out</button>
             </div>
         </div>
