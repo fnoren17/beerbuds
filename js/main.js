@@ -1,11 +1,16 @@
-function login(){
-	alert("Login");
-}
 
-function createaccount(){
-	alert("Create Account");
-}
+$(document).ready(function() {
+	// Track the current page, starts with page 1
+	var currentpage = '#page1';
 
-function help(){
-	alert("Help");
-}
+	$('.navBtn').click(function(){
+		var targetpage = $('#'+$(this).attr('targetpage'));
+		show(targetpage);
+	});
+
+	var show = function(targetpage){
+		$(currentpage).hide()
+		targetpage.show();
+		currentpage = targetpage;
+	}
+});
