@@ -6,4 +6,49 @@ html, body {
 body {
   font-family: Open-sans, sans-serif;
   font-size: 14px;
+  background-image: url("../img/bg.jpg");
+}
+
+p {
+ 	font-size: 14px;	
+    color: black;
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+}
+
+.page{
+	padding: 10px;
+}
+
+#description{
+	height: 100%;
+}
+
+.signInBtn{
+	text-align: center;
+}
+
+
+#map {
+  height: 100%;
+}
+
+
+#profilepic {
+    border-radius: 50%;
+    border-style: solid;
+    border-color: white;
+    border-width: 3px;
+}
+#flex {
+	display: flex;
+  	align-items: center;
+  	justify-content: center;
+}
+
+.row {
+	display: flex;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	align-items: center;
+	margin-bottom: 20px;
 }
