@@ -33,3 +33,22 @@ p {
 }
 
 
+#profilepic {
+    border-radius: 50%;
+    border-style: solid;
+    border-color: white;
+    border-width: 3px;
+}
+#flex {
+	display: flex;
+  	align-items: center;
+  	justify-content: center;
+}
+
+.row {
+	display: flex;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	align-items: center;
+	margin-bottom: 20px;
+}

@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <!-- Meta -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <head>
+        <!-- Meta -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
 
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
 
-    <!-- Fonts -->
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+        <!--Firebase-->
+        <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase-database.js"></script>
+
 
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -24,8 +28,18 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+        <!-- Fonts -->
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
 
-    <title>Beerbuds</title>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+
+        <!-- Scripts -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+        <!-- Bootstrap -->
+        <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 
   </head>
 <body>
@@ -46,16 +60,30 @@
             <div class="page-content">
                 <div class="page">
                     <p>Have you ever wanted to drink but all of your friends want to have a sober and boring day? Don't fear, there is more people in the town who wants to drink and they want YOU to join them for a son of a bitch or two.</p>
-                    <div class="signInBtn">
-                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="login()">Sign In With Google</button>
-                    </div>
-                </div>
+ <div class = "googleSignIn">
+                <button onclick = "googleSignin()">Google Signin</button>
+                <button onclick = "googleSignout()">Google Signout</button>
             </div>
+
+
+            <div class = "email/passSignIn">
+                <input id=txtEmail type = "email" placeholder = "Email">
+                <input id="txtPassword" type = "password" placeholder ="Password">
+                <button id="btnLogin" class = "btn btn-action">Login</button>
+                <button id="btnSignUp" class="btn btn-secondary">Sign Up</button>
+                <button id="btnLogout" class="btn btn-action" style="display:none">Log out</button>
+            </div>
+        </div>
+
+   
+                </div>
         </main>
     </div>
 </div>
 <!--..............................................STARTSIDA SLUT.................................-->    
 
-    <script src="js/main.js"></script>
-</body>
+
+ </body>
+        <script src="js/firebase.js"></script>
+        <script src="js/main.js"></script>      
 </html>
