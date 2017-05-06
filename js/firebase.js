@@ -1,15 +1,14 @@
  // Initialize Firebase
-      var config = {
-        apiKey: "AIzaSyDxSvYZAvDu3U37hMZGuyxUvWfRT6WrDFc",
-        authDomain: "authentication-mobut-proj.firebaseapp.com",
-        databaseURL: "https://authentication-mobut-proj.firebaseio.com",
-        projectId: "authentication-mobut-proj",
-        storageBucket: "authentication-mobut-proj.appspot.com",
-        messagingSenderId: "209640989261"
-      };
-      firebase.initializeApp(config);
-      console.log("firebase: ",firebase)
-
+var config = {
+  apiKey: "AIzaSyDxSvYZAvDu3U37hMZGuyxUvWfRT6WrDFc",
+  authDomain: "authentication-mobut-proj.firebaseapp.com",
+  databaseURL: "https://authentication-mobut-proj.firebaseio.com",
+  projectId: "authentication-mobut-proj",
+  storageBucket: "authentication-mobut-proj.appspot.com",
+  messagingSenderId: "209640989261"
+};
+firebase.initializeApp(config);
+console.log("firebase: ",firebase)
 
 //Login with google
 var provider = new firebase.auth.GoogleAuthProvider();
