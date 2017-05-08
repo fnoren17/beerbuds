@@ -84,9 +84,13 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
   if(firebaseUser){
     console.log("firebaseUser: ",firebaseUser);
     btnLogout.style.display = "block";
+    document.getElementById("googleSignIn").style.display ="none";
+    document.getElementById("email/passSignIn").style.display ="none";
   } else {
     console.log("not logged in");
     btnLogout.style.display = "none";
+    document.getElementById("googleSignIn").style.display ="block";
+    document.getElementById("email/passSignIn").style.display ="block";
   }
 })
 

@@ -14,6 +14,20 @@
         <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase-auth.js"></script>
         <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase-database.js"></script>
 
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.amber-indigo.min.css">
+
+
+    <!-- Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
         <!-- Fonts -->
         <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
 
@@ -27,38 +41,56 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 
-        <title>Beerbuds</title>
+  </head>
+<body>
+    <!--..............................................STARTSIDA......................................-->
+<div id="start">
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <!-- Title -->
+                <span class="mdl-layout-title">Welcome To BeerBuds</span>
+                <div class="mdl-layout-spacer"></div>
+                    <label class="mdl-button mdl-js-button mdl-button--icon" for="waterfall-exp">
+                        <i class="material-icons" onclick="help()">help</i>
+                    </label>
+                </div>
+        </header>
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <div class="page">
+                    <p>Have you ever wanted to drink but all of your friends want to have a sober and boring day? Don't fear, there is more people in the town who wants to drink and they want YOU to join them for a son of a bitch or two.</p>
 
-    </head>
-    <body>
-        <div class = "container">
-            <h1>Welcome to Beerbuds!</h1>
-            Lorem ipsum dolor sit amet...testing<br/>
-
-            <div class = "googleSignIn">
-                <button onclick = "googleSignin()">Google Signin</button>
-                <button onclick = "googleSignout()">Google Signout</button>
-            </div>
-
+                    <div class = "googleSignIn" id = "googleSignIn" style="display:block">
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="googleSignin()">Sign In With Google</button>
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="googleSignout()">Sign Out With Google</button>
+                    </div>
+                    <div class = "email/passSignIn" id = "email/passSignIn" style="display:block">
+                        <input id=txtEmail class="mdl-textfield__input" type = "email" placeholder = "Email">
+                        <input id="txtPassword" class="mdl-textfield__input" type = "password" placeholder ="Password">
+                        <button id="btnLogin" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Login</button>
+                        <button id="btnSignUp" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Sign Up</button>
+                    </div>
 
             <div class = "email/passSignIn">
-                <input id=txtEmail type = "email" placeholder = "Email">
-                <input id="txtPassword" type = "password" placeholder ="Password">
-                <button id="btnLogin" class = "btn btn-action">Login</button>
-                <button id="btnSignUp" class="btn btn-secondary">Sign Up</button>
-                <button id="btnLogout" class="btn btn-action" style="display:none">Log out</button>
+                <input id=txtEmail class="mdl-textfield__input" type = "email" placeholder = "Email">
+                <input id="txtPassword" class="mdl-textfield__input" type = "password" placeholder ="Password">
+                <button id="btnLogin" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Login</button>
+                <button id="btnSignUp" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Sign Up</button>
+                <button id="btnLogout" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="display:none">Log out</button>
+
+                     <button id="btnLogout" class="btn btn-action" style="display:none">Log out</button>
+                </div>
             </div>
-        </div>
 
             <div class="bar">
                 <button class="navBtn" targetpage="page1">Startpage</button>
                 <button class="navBtn" targetpage="page2">Page 2</button>
                 <button class="navBtn" targetpage="page3">Page 3</button>
             </div>
+
             <div class id="page1">
-              <div id="showMessages">
-              page 1
-              </div>
+              <h1>Welcome to Beerbuds!</h1>
             </div>
             <div id="page2">
               <h1>Page 2</h1>
@@ -67,8 +99,18 @@
             <div id="page3">
               <h1>Page 3</h1>
               jehjaksdhjkad
-            </div>
+          </div>
+        </main>
+    </div>
+
+
+                    
+    </div>
+
+<!--..............................................STARTSIDA SLUT.................................-->    
+
+
+ </body>
         <script src="js/firebase.js"></script>
-        <script src="js/main.js"></script>
-    </body>
+        <script src="js/main.js"></script>      
 </html>
