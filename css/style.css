@@ -6,7 +6,6 @@ html, body {
 body {
   font-family: Open-sans, sans-serif;
   font-size: 14px;
-  background-image: url("../img/bg.jpg");
 }
 
 p {
@@ -52,3 +51,27 @@ p {
 	align-items: center;
 	margin-bottom: 20px;
 }
+
+#navbar {
+  background-color: white;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  float: left;
+  text-align: center;
+  z-index: 999;
+}
+
+#uploader {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 50%;
+  margin-bottom: 10px;
+}
+
+/* Make the list of links take up the whole width of the nav */
+

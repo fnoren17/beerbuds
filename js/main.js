@@ -1,3 +1,4 @@
+
 $(document).ready(function() {
 	// Track the current page, starts with page 1
 	var currentpage = '#page1';
@@ -12,4 +13,16 @@ $(document).ready(function() {
 		targetpage.show();
 		currentpage = targetpage;
 	}
+});
+
+var dialog = document.querySelector('dialog');
+var showDialogButton = document.querySelector('#show-dialog');
+if (! dialog.showModal) {
+  dialogPolyfill.registerDialog(dialog);
+}
+showDialogButton.addEventListener('click', function() {
+  dialog.showModal();
+});
+dialog.querySelector('.close').addEventListener('click', function() {
+  dialog.close();
 });

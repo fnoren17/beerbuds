@@ -4,11 +4,11 @@
         authDomain: "authentication-mobut-proj.firebaseapp.com",
         databaseURL: "https://authentication-mobut-proj.firebaseio.com",
         projectId: "authentication-mobut-proj",
-        storageBucket: "authentication-mobut-proj.appspot.com",
+        storageBucket: "gs://authentication-mobut-proj.appspot.com",
         messagingSenderId: "209640989261"
       };
       firebase.initializeApp(config);
-      console.log("firebase: ",firebase)
+      //console.log("firebase: ",firebase)
 
 
 //Login with google
@@ -83,7 +83,7 @@ btnLogout.addEventListener("click", e =>{
 //Add a realtime listener
 firebase.auth().onAuthStateChanged(firebaseUser => {
   if(firebaseUser){
-    console.log("firebaseUser: ",firebaseUser);
+    //console.log("firebaseUser: ",firebaseUser);
     btnLogout.style.display = "block";
     document.getElementById("googleSignIn").style.display ="none";
     document.getElementById("email/passSignIn").style.display ="none";
@@ -96,3 +96,55 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
 })
 
 const auth = firebase.auth();
+
+
+
+//Add data to database
+//Get elements
+var preObject = document.getElementById("object");
+var ulList = document.getElementById("list");
+
+//Create references
+var dbRefObject = firebase.database().ref().child("object2");
+var dbRefList = firebase.database().ref()............2.14 https://www.youtube.com/watch?v=dBscwaqNPuk
+
+//Sync object changes
+dbRefObject.on("value", snap => {
+  preObject.innerText = JSON.stringify(snap.val(),null,3)
+});
+
+
+
+//Add files to storage
+//var storage = firebase.storage();
+var uploader = document.getElementById("uploader");
+var fileButton = document.getElementById("fileButton");
+
+fileButton.addEventListener("change", function(e){
+  //Get file
+  var file = e.target.files[0];
+  //console.log("firebasestorage: ", firebase.storage().ref("sweet_gifs/"));
+  console.log("firebase: ", firebase)
+
+  //Create a storage ref
+  var storageRef = firebase.storage().ref("ProfilePic/").child(file.name);
+
+  //Upload file
+  storageRef.put(file);
+
+  //Update progress bar
+  task.on("state_changed",
+    function progress(snapshot) {
+      var percentage = (snapshot.bytesTransferred / snapshot.totalBytes)*100;
+      uploader.value = percentage;
+
+    },
+
+    function error(err) {
+
+    },
+    function complete() {
+
+    }
+    );
+});
