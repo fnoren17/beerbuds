@@ -26,3 +26,5 @@ showDialogButton.addEventListener('click', function() {
 dialog.querySelector('.close').addEventListener('click', function() {
   dialog.close();
 });
+
+
