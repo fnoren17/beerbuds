@@ -134,6 +134,8 @@ dbRefList.on("child_removed", snap=> {
   liToRemove.remove();
 });
 
+var mainText = document.getElementById("mainText");
+var submitBtn = document.getElementById("submitBtn");
 
 //Add files to storage
 //var storage = firebase.storage();
@@ -168,3 +170,18 @@ fileButton.addEventListener("change", function(e){
     }
     );
 });
+
+
+
+//TODO skapa submitclick lägg in firebase.database().ref() med sitt id så det läggs till när
+// man skapar en användare med ett id. Sen kan all info länkas lätt till det specifika id:t när man loggar in
+
+
+//Add new data to firebase
+function submitClick() {
+  var firebaseRef = firebase.database().ref();
+  var messageText = mainText.value;
+
+  firebaseRef.child("text").set(messageText)
+
+}
