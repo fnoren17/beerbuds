@@ -43,12 +43,16 @@
           animation: google.maps.Animation.DROP
         });
         markers.push(marker);
+        var infowindow = new google.maps.InfoWindow({
+          content: "Nån jävel vill dricka öl här"
+        });
         marker.addListener('click',function(){
-          if (marker.getAnimation() !== null) {
-            marker.setAnimation(null);
-          } else {
-            marker.setAnimation(google.maps.Animation.BOUNCE);
-          }
+          infowindow.open(map, marker);
+          // if (marker.getAnimation() !== null) {
+          //   marker.setAnimation(null);
+          // } else {
+          //   marker.setAnimation(google.maps.Animation.BOUNCE);
+          // }
         });
       });
 

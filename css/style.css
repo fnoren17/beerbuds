@@ -28,7 +28,8 @@ p {
 
 
 #map {
-  height: 100%;
+  height: 100% !important;
+  color: blue; 
 }
 
 
@@ -65,13 +66,5 @@ p {
   text-align: center;
   z-index: 999;
 }
-
-#uploader {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 50%;
-  margin-bottom: 10px;
-}
-
 /* Make the list of links take up the whole width of the nav */
 
