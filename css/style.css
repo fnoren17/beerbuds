@@ -41,8 +41,8 @@ p {
 }
 #flex {
 	display: flex;
-  	align-items: center;
-  	justify-content: center;
+  align-items: center;
+  justify-content: center;
 }
 
 .row {
@@ -79,5 +79,10 @@ p {
   height: 100%;
 }
 
+.email-passSignIn{
+    display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 /* Make the list of links take up the whole width of the nav */

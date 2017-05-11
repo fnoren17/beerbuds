@@ -35,25 +35,16 @@
     <body>
         <!--..............................................SIDA START......................................-->
         <div class="container">
-
-            <div id="flex" class="col-12" style="margin-top:20px;"><h1><i class="fa fa-beer fa-2x"></i> BeerBuds</h1></div>
-
-            <div class id="page1">
-                <main class="mdl-layout__content">
-
             <div id="flex" class="col-12" style="margin-top:20px;">
                 <h1><i class="fa fa-beer fa-2x"></i> BeerBuds</h1>
             </div>
             <main class="mdl-layout__content">
                 <div id="page1">
-
-
-
               <div id="showMessages"></div>
 
 
             <!--Login-->
-            <div class="email/passSignIn">
+            <div class="email-passSignIn">
                 <input id=txtEmail class="mdl-textfield__input" type = "email" placeholder = "Email">
                 <input id="txtPassword" class="mdl-textfield__input" type = "password" placeholder ="Password"></br>
                 <button id="btnLogin" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Login</button>
@@ -64,6 +55,7 @@
                 <button id="btnLogout" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="display:none">Log out</button>
                 <button id="btnLogout" class="btn btn-action" style="display:none">Log out</button>
             </div>
+
 
             <!--ProfilePage-->
             <div>
@@ -251,6 +243,7 @@
         marker.index = 1;
         var markers = [];
         var beer = document.getElementById('beer');
+
         $(document).ready(function() {
             $('#js-show-map').click(function(event) {
                   /* Act on the event */
@@ -272,6 +265,7 @@
               console.log(marker.position);
             });
         });
+
         function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
           center: setCenter(),
@@ -279,18 +273,21 @@
           disableDefaultUI: true
           });
             map.controls[google.maps.ControlPosition.LEFT_TOP].push(marker);
+
         var userMarker = new google.maps.Marker({
             position: setCenter(),
             map: map,
             icon: 'http://www.robotwoods.com/dev/misc/bluecircle.png'
         });
         }
+
         function deleteMarkers() {
         for (var i = 0; i < markers.length; i++) {
           markers[i].setMap(null);
         }
         markers = [];
         }
+
         function setCenter(){
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function(position) {
@@ -306,6 +303,7 @@
           // Browser doesn't support Geolocation
           handleLocationError(false, map.getCenter());
         }
+
         function handleLocationError(browserHasGeolocation, pos) {
             alert('no geolocation');
         }
