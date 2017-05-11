@@ -28,8 +28,9 @@ p {
 
 
 #map {
-  height: 100% !important;
-  color: blue; 
+  height: 100%;
+  width: 100%;
+
 }
 
 
@@ -67,5 +68,8 @@ p {
   z-index: 999;
 }
 
-/* Make the list of links take up the whole width of the nav */
+#page3 {
+  height: 100%;
+}
 
+/* Make the list of links take up the whole width of the nav */

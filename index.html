@@ -47,6 +47,7 @@
                     </div>
 
 
+
                     <div id="showMessages"></div>
 
                     <div class="email/passSignIn">
@@ -127,66 +128,92 @@
                 </div>
             </div>
             <div id="page3" style="display: none">
-              <h1>Page 3</h1>
 
-   <div id="map">
-     <div id="marker">
-        <button id="beer" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">I want beer!</button>
-      </div>
-   </div>
-   
+                <h1>Map</h1>
+                <div id="map">
+                    <div id="marker">
+                    <button id="beer" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">I want beer!</button>
+                    </div>
+              </div>
 
-    
-    <script>
-      var marker = document.getElementById("marker");
-      marker.index = 1;
-      var markers = [];
-      var beer = document.getElementById('beer');
-      
-      beer.addEventListener('click',function(){
-        var marker = new google.maps.Marker({
-          position: map.getCenter(),
-          map: map,
-          draggable: true,
-          animation: google.maps.Animation.DROP
-        });
-        markers.push(marker);
-        var infowindow = new google.maps.InfoWindow({
-          content: "Nån jävel vill dricka öl här"
-        });
-        marker.addListener('click',function(){
-          infowindow.open(map, marker);
-          // if (marker.getAnimation() !== null) {
-          //   marker.setAnimation(null);
-          // } else {
-          //   marker.setAnimation(google.maps.Animation.BOUNCE);
-          // }
-        });
-      });
+          </div>
+        </main>
 
-      function initMap() {
+    </div>
+
+    <div id="navbar">
+        <div class="col-3">
+            <a class="navBtn" targetpage="page1"><i class="fa fa-home fa-2x"></i></a>
+        </div>
+        <div class="col-3">
+            <a class="navBtn" targetpage="page2"><i class="fa fa-feed fa-2x"></i></a>
+        </div>
+        <div class="col-3">
+            <a id="js-show-map" class="navBtn" targetpage="page3"><i class="fa fa-map fa-2x"></i></a>
+        </div>
+        <div class="col-3">
+            <a class="navBtn" targetpage="page4"><i class="fa fa-cog fa-2x"></i></a>
+        </div>
+    </div>
+
+
+
+        <!--..............................................STARTSIDA SLUT.................................-->
+        <script src="js/firebase.js"></script>
+        <script src="js/main.js"></script> 
+
+        <script>
+        var map;
+        var marker = document.getElementById("marker");
+        marker.index = 1;
+        var markers = [];
+        var beer = document.getElementById('beer');
+
+        $(document).ready(function() {
+            $('#js-show-map').click(function(event) {
+                  /* Act on the event */
+                  console.log('jsshowmap');
+                  google.maps.event.trigger(map, 'resize');
+            });
+        });
+          
+        beer.addEventListener('click',function(){
+            var marker = new google.maps.Marker({
+              position: map.getCenter(),
+              map: map,
+              draggable: true,
+              animation: google.maps.Animation.DROP
+            });
+            markers.push(marker);
+            marker.addListener('dragend',function(){
+              console.log('Here we can update the position');
+              console.log(marker.position);
+            });
+        });
+
+        function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
           center: setCenter(),
           zoom: 17,
           disableDefaultUI: true
           });
             map.controls[google.maps.ControlPosition.LEFT_TOP].push(marker);
-        
+
         var userMarker = new google.maps.Marker({
             position: setCenter(),
             map: map,
             icon: 'http://www.robotwoods.com/dev/misc/bluecircle.png'
         });
-      }
+        }
 
-     function deleteMarkers() {
+        function deleteMarkers() {
         for (var i = 0; i < markers.length; i++) {
           markers[i].setMap(null);
         }
         markers = [];
-      }
+        }
 
-      function setCenter(){
+        function setCenter(){
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function(position) {
             var pos = {
@@ -205,38 +232,9 @@
         function handleLocationError(browserHasGeolocation, pos) {
             alert('no geolocation');
         }
-      }
-
-
-
-    </script>
+        }
+        </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCn2-5FWdpedj1ktxvGM76HqCySwBUPOpI&callback=initMap"
-    async defer></script>
-</body>
-          </div>
-        </main>
-
-    </div>
-
-    <div id="navbar">
-        <div class="col-3">
-            <a class="navBtn" targetpage="page1"><i class="fa fa-home fa-2x"></i></a>
-        </div>
-        <div class="col-3">
-            <a class="navBtn" targetpage="page2"><i class="fa fa-feed fa-2x"></i></a>
-        </div>
-        <div class="col-3">
-            <a class="navBtn" targetpage="page3"><i class="fa fa-map fa-2x"></i></a>
-        </div>
-        <div class="col-3">
-            <a class="navBtn" targetpage="page4"><i class="fa fa-cog fa-2x"></i></a>
-        </div>
-    </div>
-
-
-
-        <!--..............................................STARTSIDA SLUT.................................-->
-        <script src="js/firebase.js"></script>
-        <script src="js/main.js"></script>    
+    async defer></script>   
     </body>   
 </html>
