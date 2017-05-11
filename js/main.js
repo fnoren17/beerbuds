@@ -27,4 +27,3 @@ dialog.querySelector('.close').addEventListener('click', function() {
   dialog.close();
 });
 
-
