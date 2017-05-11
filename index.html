@@ -33,17 +33,21 @@
         <link rel="stylesheet" href="/font-awesome-4.7.0/css/font-awesome.min.css">
     </head>
     <body>
-        <!--..............................................STARTSIDA......................................-->
+        <!--..............................................SIDA START......................................-->
         <div class="container">
+
             <div id="flex" class="col-12" style="margin-top:20px;"><h1><i class="fa fa-beer fa-2x"></i> BeerBuds</h1></div>
 
             <div class id="page1">
                 <main class="mdl-layout__content">
-                    <div class="page-content">
-                        <div class="page">
-                            <p>Have you ever wanted to drink but all of your friends want to have a sober and boring day? Don't fear, there is more people in the town who wants to drink and they want YOU to join them for a son of a bitch or two.</p>
-                        </div>
-                    </div>
+
+            <div id="flex" class="col-12" style="margin-top:20px;">
+                <h1><i class="fa fa-beer fa-2x"></i> BeerBuds</h1>
+            </div>
+            <main class="mdl-layout__content">
+                <div id="page1">
+
+
 
               <div id="showMessages"></div>
 
@@ -78,6 +82,7 @@
 
                     <div class="col-12">
 
+
                     <!-- Följande HTML ska genereras dynamiskt av datan som folk sänder -->
                         <div class="row" id="flex" style="border: 1px solid black; border-radius: 5px;">
                             <div class="col-4">
@@ -106,6 +111,7 @@
                             <div class="col-4">
                             <img src="https://scontent-arn2-1.xx.fbcdn.net/v/t1.0-9/18199189_1814366315241996_5354179833089832750_n.jpg?oh=538474762f5fdc890bb950a61c4159a6&oe=598B767C" id="profilepic" width="100px" height="100px"></img>
                             </div>
+
                             <div class="col-8" style="font-size: 10pt">
                             
                             <b>Erik</b> wants to get his drink on <i></br>near Södermalm</i>
@@ -113,6 +119,7 @@
                             Swipe right to start chatting >
                             </div>
                         </div>
+
 
                         <div class="row" id="flex" style="border: 1px solid black; border-radius: 5px;">
                             <div class="col-4">
@@ -128,6 +135,7 @@
                     </div>
      
                 </div>
+
             </div>
             <div id="page3" style="display: none">
               <h1>Page 3</h1>
@@ -166,8 +174,39 @@
             </div>
 
           <div id="page5" style="display: none">
-              <h1>Page 3</h1>
-              settings
+              <h1>Settings</h1>
+                      <ul class="demo-list-control mdl-list">
+                      <li class="mdl-list__item">
+                        <span class="mdl-list__item-primary-content">
+                          Setting 0
+                        </span>
+                        <span class="mdl-list__item-secondary-action">
+                            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="list-switch-0">
+                                <input type="checkbox" id="list-switch-0" class="mdl-switch__input" checked />
+                            </label>
+                        </span>
+                      </li>
+                      <li class="mdl-list__item">
+                        <span class="mdl-list__item-primary-content">
+                          Setting 1
+                        </span>
+                        <span class="mdl-list__item-secondary-action">
+                            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="list-switch-1">
+                                <input type="checkbox" id="list-switch-1" class="mdl-switch__input" checked />
+                            </label>
+                        </span>
+                      </li>
+                      <li class="mdl-list__item">
+                        <span class="mdl-list__item-primary-content">
+                          Setting 2
+                        </span>
+                        <span class="mdl-list__item-secondary-action">
+                          <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="list-switch-2">
+                            <input type="checkbox" id="list-switch-2" class="mdl-switch__input" checked />
+                          </label>
+                        </span>
+                      </li>
+                    </ul>
           </div>
 
 
@@ -192,8 +231,95 @@
         </div>
     </div>
 
-        <!--..............................................STARTSIDA SLUT.................................-->
+      
+
+
+               
+                     
+            </main>
+        </div>    
+        <!--..............................................SIDA SLUT.................................-->
         <script src="js/firebase.js"></script>
         <script src="js/main.js"></script>    
+
+        <script src="js/firebase.js"></script>
+        <script src="js/main.js"></script> 
+
+        <script>
+        var map;
+        var marker = document.getElementById("marker");
+        marker.index = 1;
+        var markers = [];
+        var beer = document.getElementById('beer');
+
+        $(document).ready(function() {
+            $('#js-show-map').click(function(event) {
+                  /* Act on the event */
+                  console.log('jsshowmap');
+                  google.maps.event.trigger(map, 'resize');
+            });
+        });
+          
+        beer.addEventListener('click',function(){
+            var marker = new google.maps.Marker({
+              position: map.getCenter(),
+              map: map,
+              draggable: true,
+              animation: google.maps.Animation.DROP
+            });
+            markers.push(marker);
+            marker.addListener('dragend',function(){
+              console.log('Here we can update the position');
+              console.log(marker.position);
+            });
+        });
+
+        function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: setCenter(),
+          zoom: 17,
+          disableDefaultUI: true
+          });
+            map.controls[google.maps.ControlPosition.LEFT_TOP].push(marker);
+
+        var userMarker = new google.maps.Marker({
+            position: setCenter(),
+            map: map,
+            icon: 'http://www.robotwoods.com/dev/misc/bluecircle.png'
+        });
+        }
+
+        function deleteMarkers() {
+        for (var i = 0; i < markers.length; i++) {
+          markers[i].setMap(null);
+        }
+        markers = [];
+        }
+
+        function setCenter(){
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+            map.setCenter(pos);
+          }, function() {
+            handleLocationError(true, map.getCenter());
+          });
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, map.getCenter());
+        }
+
+        function handleLocationError(browserHasGeolocation, pos) {
+            alert('no geolocation');
+        }
+        }
+        </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCn2-5FWdpedj1ktxvGM76HqCySwBUPOpI&callback=initMap"
+    async defer></script>   
+
+
     </body>   
 </html>
