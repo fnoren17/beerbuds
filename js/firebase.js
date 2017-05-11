@@ -21,8 +21,8 @@ function googleSignin() {
       var token = result.credential.accessToken;
       var user = result.user;
 		
-      console.log(token)
-      console.log(user)
+      //console.log(token)
+      //console.log(user)
    }).catch(function(error) {
       var errorCode = error.code;
       var errorMessage = error.message;
@@ -99,6 +99,7 @@ const auth = firebase.auth();
 
 
 
+
 //Add data to database
 //Get elements
 var preObject = document.getElementById("object");
@@ -107,7 +108,6 @@ var ulList = document.getElementById("list");
 //Create references
 var dbRefObject = firebase.database().ref().child("object");
 var dbRefList = dbRefObject.child("Hobbies");
-
 
 
 //Sync object changes
@@ -176,6 +176,22 @@ fileButton.addEventListener("change", function(e){
 
 //TODO skapa submitclick lägg in firebase.database().ref() med sitt id så det läggs till när
 // man skapar en användare med ett id. Sen kan all info länkas lätt till det specifika id:t när man loggar in
+
+//Create ID to database with your UUID
+var googleSignIn = document.getElementById("googleSignIn")
+function createID() {
+  var firebaseRef = firebase.database().ref();
+  firebase.auth().onAuthStateChanged((firebaseUser) => {
+    if (firebaseUser) {
+      console.log(firebaseUser.uid);
+      var userID = firebaseUser.uid;
+      firebaseRef.child("Users").set(userID);
+    }
+  });
+  //var userID = googleSignIn.value;
+  //console.log("UserID: ",userID)
+  //firebaseRef.push().set(userID)
+}
 
 
 //Add new data to firebase

@@ -48,21 +48,29 @@
 
               <div id="showMessages"></div>
 
+
+            <!--Login-->
             <div class="email/passSignIn">
                 <input id=txtEmail class="mdl-textfield__input" type = "email" placeholder = "Email">
                 <input id="txtPassword" class="mdl-textfield__input" type = "password" placeholder ="Password"></br>
                 <button id="btnLogin" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Login</button>
                 <button id="btnSignUp" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Sign Up</button>
                 <div class = "googleSignIn" id = "googleSignIn" style="display:block"></br>
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="googleSignin()">Sign In With Google</button>
-                            </div>
-                <button id="btnLogout" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="display:none">Log out</button>
-
-                     <button id="btnLogout" class="btn btn-action" style="display:none">Log out</button>
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="createID();googleSignin()">Sign In With Google</button>
                 </div>
-            </div>
+                <button id="btnLogout" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="display:none">Log out</button>
+                <button id="btnLogout" class="btn btn-action" style="display:none">Log out</button>
             </div>
 
+            <!--ProfilePage-->
+            <div>
+
+            </div>
+        </div>
+    
+
+
+        <!--Feed of beerguys-->
             <div id="page2" style="display: none">
                 <div class="container" id="page1" style="font-family: 'Avenir Next';">
                     <div class="col-12" style="margin-top: 40px; margin-bottom: 40px">
@@ -131,16 +139,21 @@
                 <h1>Page 4</h1>
                 <div class="container" id="page1" style="font-family: 'Avenir Next';">
 
+
+                    <!--Testing-->
                     <pre id="object">
                     </pre>
                     <ul id="list"></ul>
 
+                    <!--.storage(). not working-->
                      <progress value="0" max="100" id="uploader">0%</progress>
                     <input type="file" value="upload" id="fileButton"/>
 
                     <h1>Namn: </h1><h2 id= "Name"></h2>     
                     <h1>Öl: </h1><h2 id="Beers"></h2>  
 
+                    <p>funkar nu, ändra id:t att kolla i firebase.js för test</p>
+                    <button id = "testforUUID" onclick ="createID()">TestforUUID</button>
 
                     <!--Input name-->
                     <input id = "nameInput" class="mdl-textfield__input" placeholder = "Name"/> <button id = "submitNameBtn" class="btn btn-action" style="display:block"  onclick="submitNameClick()">Submit Name</button>
@@ -148,19 +161,6 @@
                     <!--Input beer preference-->
                     <input id = "beerInput" class="mdl-textfield__input" placeholder = "Beers"/>
                     <button id = "submitBeerBtn" class="btn btn-action" style="display:block"  onclick="submitBeerClick()">Submit Beers</button>
-
-             
-
-
-                   
-
-                    <input class="mdl-textfield__input" id="username" placeholder="Namn">                      
-                    <button id="SubmitName" class="btn btn-action" style="display:block">Submit</button><br/>
-                    <input class="mdl-textfield__input" id="preference" placeholder = "Ölpreferens">
-                    <button id="SubmitBeer" class="btn btn-action" style="display:block">Submit</button><br/>
-
-
-
 
 
                 </div>
