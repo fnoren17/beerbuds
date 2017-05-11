@@ -29,6 +29,7 @@ p {
 
 #map {
   height: 100%;
+  width: 100%;
 }
 
 
@@ -64,6 +65,10 @@ p {
   float: left;
   text-align: center;
   z-index: 999;
+}
+
+#page3 {
+  height: 100%;
 }
 
 /* Make the list of links take up the whole width of the nav */
