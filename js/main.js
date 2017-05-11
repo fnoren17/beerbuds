@@ -16,6 +16,7 @@ $(document).ready(function() {
 	}
 });
 
+
 // var dialog = document.querySelector('dialog');
 // var showDialogButton = document.querySelector('#show-dialog');
 // if (!dialog.showModal) {
@@ -27,4 +28,5 @@ $(document).ready(function() {
 // dialog.querySelector('.close').addEventListener('click', function() {
 //   dialog.close();
 // });
+
 
