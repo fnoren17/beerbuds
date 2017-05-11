@@ -184,28 +184,29 @@ function submitNameClick() {
   var messageText = nameInput.value;
 
   firebaseRef.child("text").set(messageText) //.push().
-  //Retrieve data from firebase
-  var firebaseName = document.getElementById("Name");
-
-  var firebaseNameRef = firebase.database().ref().child("text")
-  firebaseNameRef.on("value", function(datasnapshot) {
-    Name.innerText = datasnapshot.val();
-  });
 }
+//Retrieve data from firebase
+var firebaseName = document.getElementById("Name");
+
+var firebaseNameRef = firebase.database().ref().child("text")
+firebaseNameRef.on("value", function(datasnapshot) {
+  Name.innerText = datasnapshot.val();
+});
 
 function submitBeerClick() {
   var firebaseRef = firebase.database().ref();
   var messageText = nameInput.value;
 
   firebaseRef.child("beers").set(messageText) //.push().
-  //Retrieve data from firebase
-  var firebaseName = document.getElementById("Beers");
-
-  var firebaseNameRef = firebase.database().ref().child("beers")
-  firebaseNameRef.on("value", function(datasnapshot) {
-    Beers.innerText = datasnapshot.val();
-  });
 }
+
+//Retrieve data from firebase
+var firebaseName = document.getElementById("Beers");
+
+var firebaseNameRef = firebase.database().ref().child("beers")
+firebaseNameRef.on("value", function(datasnapshot) {
+  Beers.innerText = datasnapshot.val();
+});
 
 // //Retrieve data from firebase
 // var firebaseName = document.getElementById("Name");
