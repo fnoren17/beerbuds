@@ -33,23 +33,20 @@
         <link rel="stylesheet" href="/font-awesome-4.7.0/css/font-awesome.min.css">
     </head>
     <body>
-        <!--..............................................STARTSIDA......................................-->
+        <!--..............................................SIDA START......................................-->
         <div class="container">
             <div id="flex" class="col-12" style="margin-top:20px;">
                 <h1><i class="fa fa-beer fa-2x"></i> BeerBuds</h1>
             </div>
-            <div class id="page1">
-                <main class="mdl-layout__content">
+            <main class="mdl-layout__content">
+                <div id="page1">
                     <div class="page-content">
                         <div class="page">
                             <p>Have you ever wanted to drink but all of your friends want to have a sober and boring day? Don't fear, there is more people in the town who wants to drink and they want YOU to join them for a son of a bitch or two.</p>
                         </div>
                     </div>
 
-
-
                     <div id="showMessages"></div>
-
                     <div class="email/passSignIn">
                         <input id=txtEmail class="mdl-textfield__input" type = "email" placeholder = "Email">
                         <input id="txtPassword" class="mdl-textfield__input" type = "password" placeholder ="Password"></br>
@@ -60,17 +57,11 @@
                         </div>
                         <button id="btnLogout" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="display:none">Log out</button>
                     </div>
-
-                    <div class="bar">
-                        <button class="navBtn" targetpage="page1">Startpage</button>
-                        <button class="navBtn" targetpage="page2">Page 2</button>
-                        <button class="navBtn" targetpage="page3">Page 3</button>
-                    </div>
                 </div>
             
 
-                    <div id="page2" style="display: none">
-                        <div class="container" id="page1" style="font-family: 'Avenir Next';">
+                <div id="page2" style="display: none">
+                    <div class="container" id="page1" style="font-family: 'Avenir Next';">
                         <div class="col-12" style="margin-top: 40px; margin-bottom: 40px">
                             <h2 style="text-align: center;">PEOPLE HUNGRY FOR BEER</h2>
                         </div>
@@ -122,12 +113,10 @@
                                 Swipe right to start chatting >
                                 </div>
                             </div>
+                        </div>
                     </div>
                 </div>
-
-                </div>
-            </div>
-            <div id="page3" style="display: none">
+                <div id="page3" style="display: none">
 
                 <h1>Map</h1>
                 <div id="map">
@@ -136,29 +125,64 @@
                     </div>
               </div>
 
-          </div>
-        </main>
+                </div>
 
-    </div>
+                <div id="page4" style="display: none">
+                    <h1>Page 4</h1>
+                    <ul class="demo-list-control mdl-list">
+                      <li class="mdl-list__item">
+                        <span class="mdl-list__item-primary-content">
+                          Setting 0
+                        </span>
+                        <span class="mdl-list__item-secondary-action">
+                            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="list-switch-0">
+                                <input type="checkbox" id="list-switch-0" class="mdl-switch__input" checked />
+                            </label>
+                        </span>
+                      </li>
+                      <li class="mdl-list__item">
+                        <span class="mdl-list__item-primary-content">
+                          Setting 1
+                        </span>
+                        <span class="mdl-list__item-secondary-action">
+                            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="list-switch-1">
+                                <input type="checkbox" id="list-switch-1" class="mdl-switch__input" checked />
+                            </label>
+                        </span>
+                      </li>
+                      <li class="mdl-list__item">
+                        <span class="mdl-list__item-primary-content">
+                          Setting 2
+                        </span>
+                        <span class="mdl-list__item-secondary-action">
+                          <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="list-switch-2">
+                            <input type="checkbox" id="list-switch-2" class="mdl-switch__input" checked />
+                          </label>
+                        </span>
+                      </li>
+                    </ul>
+                </div>
+            
+                <div id="navbar">
+                    <div class="col-3">
+                        <a class="navBtn" targetpage="page1"><i class="fa fa-home fa-2x"></i></a>
+                    </div>
+                    <div class="col-3">
+                        <a class="navBtn" targetpage="page2"><i class="fa fa-feed fa-2x"></i></a>
+                    </div>
+                    <div class="col-3">
+                        <a class="navBtn" targetpage="page3"><i class="fa fa-map fa-2x"></i></a>
+                    </div>
+                    <div class="col-3">
+                        <a class="navBtn" targetpage="page4"><i class="fa fa-cog fa-2x"></i></a>
+                    </div>
+                </div>
+            </main>
+        </div>    
+        <!--..............................................SIDA SLUT.................................-->
+        <script src="js/firebase.js"></script>
+        <script src="js/main.js"></script>    
 
-    <div id="navbar">
-        <div class="col-3">
-            <a class="navBtn" targetpage="page1"><i class="fa fa-home fa-2x"></i></a>
-        </div>
-        <div class="col-3">
-            <a class="navBtn" targetpage="page2"><i class="fa fa-feed fa-2x"></i></a>
-        </div>
-        <div class="col-3">
-            <a id="js-show-map" class="navBtn" targetpage="page3"><i class="fa fa-map fa-2x"></i></a>
-        </div>
-        <div class="col-3">
-            <a class="navBtn" targetpage="page4"><i class="fa fa-cog fa-2x"></i></a>
-        </div>
-    </div>
-
-
-
-        <!--..............................................STARTSIDA SLUT.................................-->
         <script src="js/firebase.js"></script>
         <script src="js/main.js"></script> 
 
@@ -236,5 +260,6 @@
         </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCn2-5FWdpedj1ktxvGM76HqCySwBUPOpI&callback=initMap"
     async defer></script>   
+
     </body>   
 </html>
