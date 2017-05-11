@@ -42,28 +42,28 @@ function googleSignout() {
    });
 }
 
-function findBeerBuds() {
-  console.log("Hej nu är vi i findBeerBuds");
-  var firebaseobject =  firebase.database().ref().child('object')
-  var dbNames = firebaseobject.child("Name");
+// function findBeerBuds() {
+//   console.log("Hej nu är vi i findBeerBuds");
+//   var firebaseobject =  firebase.database().ref().child('object')
+//   var dbNames = firebaseobject.child("Name");
 
-  dbNames.on("child_added", snap => {
-    var li = document.createElement('li');
-    li.innerText = snap.val();
-    li.id = snap.key;
-    ulList.appendChild(li);
-  });
+//   dbNames.on("child_added", snap => {
+//     var li = document.createElement('li');
+//     li.innerText = snap.val();
+//     li.id = snap.key;
+//     ulList.appendChild(li);
+//   });
 
-  dbNames.on("child_changed", snap=> {
-    var liChanged = document.getElementById(snap.key);
-    liChanged.innerText = snap.val();
-  });
+//   dbNames.on("child_changed", snap=> {
+//     var liChanged = document.getElementById(snap.key);
+//     liChanged.innerText = snap.val();
+//   });
 
-  dbNames.on("child_removed", snap=> {
-    var liToRemove = document.getElementById(snap.key);
-    liToRemove.remove();
-  });
-}
+//   dbNames.on("child_removed", snap=> {
+//     var liToRemove = document.getElementById(snap.key);
+//     liToRemove.remove();
+//   });
+// }
 
 
 //Login without google
@@ -202,17 +202,19 @@ fileButton.addEventListener("change", function(e){
 //Create ID to database with your UUID
 var googleSignIn = document.getElementById("googleSignIn")
 function createID() {
-  var firebaseRef = firebase.database().ref();
   firebase.auth().onAuthStateChanged((firebaseUser) => {
     if (firebaseUser) {
       console.log(firebaseUser.uid);
       var userID = firebaseUser.uid;
-      firebaseRef.child("Users").set(userID);
+      firebase.database().ref('users/' + userID).set({
+        name: 'John Appleseed',
+        beer1: 'lager',
+        beer2: 'IPA',
+        beer3: 'APA',
+        bio: 'Hi I am John'
+        });
     }
   });
-  //var userID = googleSignIn.value;
-  //console.log("UserID: ",userID)
-  //firebaseRef.push().set(userID)
 }
 
 
