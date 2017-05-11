@@ -42,6 +42,28 @@ function googleSignout() {
    });
 }
 
+function findBeerBuds() {
+  console.log("Hej nu är vi i findBeerBuds");
+  var firebaseobject =  firebase.database().ref().child('object')
+  var dbNames = firebaseobject.child("Name");
+
+  dbNames.on("child_added", snap => {
+    var li = document.createElement('li');
+    li.innerText = snap.val();
+    li.id = snap.key;
+    ulList.appendChild(li);
+  });
+
+  dbNames.on("child_changed", snap=> {
+    var liChanged = document.getElementById(snap.key);
+    liChanged.innerText = snap.val();
+  });
+
+  dbNames.on("child_removed", snap=> {
+    var liToRemove = document.getElementById(snap.key);
+    liToRemove.remove();
+  });
+}
 
 
 //Login without google
