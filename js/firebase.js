@@ -105,14 +105,34 @@ var preObject = document.getElementById("object");
 var ulList = document.getElementById("list");
 
 //Create references
-var dbRefObject = firebase.database().ref().child("object2");
-var dbRefList = firebase.database().ref()............2.14 https://www.youtube.com/watch?v=dBscwaqNPuk
+var dbRefObject = firebase.database().ref().child("object");
+var dbRefList = dbRefObject.child("Hobbies");
+
+
 
 //Sync object changes
 dbRefObject.on("value", snap => {
   preObject.innerText = JSON.stringify(snap.val(),null,3)
 });
 
+
+//Changing the database
+dbRefList.on("child_added", snap=> {
+  var li = document.createElement('li');
+  li.innerText = snap.val();
+  li.id = snap.key;
+  ulList.appendChild(li);
+});
+
+dbRefList.on("child_changed", snap=> {
+  var liChanged = document.getElementById(snap.key);
+  liChanged.innerText = snap.val();
+});
+
+dbRefList.on("child_removed", snap=> {
+  var liToRemove = document.getElementById(snap.key);
+  liToRemove.remove();
+});
 
 
 //Add files to storage
