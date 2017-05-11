@@ -211,17 +211,18 @@ firebaseNameRef.on("value", function(datasnapshot) {
 
 function submitBeerClick() {
   var firebaseRef = firebase.database().ref();
-  var messageText = nameInput.value;
+  var messageText = beerInput.value;
 
   firebaseRef.child("beers").set(messageText) //.push().
 }
 
 //Retrieve data from firebase
-var firebaseName = document.getElementById("Beers");
+var firebaseBeers = document.getElementById("Beers");
 
 var firebaseNameRef = firebase.database().ref().child("beers")
 firebaseNameRef.on("value", function(datasnapshot) {
   Beers.innerText = datasnapshot.val();
+  console.log("beerS", Beers.innerText)
 });
 
 // //Retrieve data from firebase
