@@ -1,15 +1,14 @@
  // Initialize Firebase
-      var config = {
-        apiKey: "AIzaSyDxSvYZAvDu3U37hMZGuyxUvWfRT6WrDFc",
-        authDomain: "authentication-mobut-proj.firebaseapp.com",
-        databaseURL: "https://authentication-mobut-proj.firebaseio.com",
-        projectId: "authentication-mobut-proj",
-        storageBucket: "authentication-mobut-proj.appspot.com",
-        messagingSenderId: "209640989261"
-      };
-      firebase.initializeApp(config);
-      console.log("firebase: ",firebase)
-
+var config = {
+  apiKey: "AIzaSyDxSvYZAvDu3U37hMZGuyxUvWfRT6WrDFc",
+  authDomain: "authentication-mobut-proj.firebaseapp.com",
+  databaseURL: "https://authentication-mobut-proj.firebaseio.com",
+  projectId: "authentication-mobut-proj",
+  storageBucket: "authentication-mobut-proj.appspot.com",
+  messagingSenderId: "209640989261"
+};
+firebase.initializeApp(config);
+// console.log("firebase: ",firebase)
 
 //Login with google
 var provider = new firebase.auth.GoogleAuthProvider();
@@ -21,14 +20,14 @@ function googleSignin() {
       var token = result.credential.accessToken;
       var user = result.user;
 		
-      console.log(token)
-      console.log(user)
+      // console.log(token)
+      // console.log(user)
    }).catch(function(error) {
       var errorCode = error.code;
       var errorMessage = error.message;
 		
-      console.log(error.code)
-      console.log(error.message)
+      // console.log(error.code)
+      // console.log(error.message)
    });
 }
 
@@ -84,15 +83,16 @@ btnLogout.addEventListener("click", e =>{
 firebase.auth().onAuthStateChanged(firebaseUser => {
   if(firebaseUser){
     console.log("firebaseUser: ",firebaseUser);
+    console.log('logged in');
     btnLogout.style.display = "block";
     document.getElementById("googleSignIn").style.display ="none";
-    document.getElementById("email/passSignIn").style.display ="none";
+    document.getElementById("emailpassSignIn").style.display ="none";
   } else {
     console.log("not logged in");
     btnLogout.style.display = "none";
     document.getElementById("googleSignIn").style.display ="block";
-    document.getElementById("email/passSignIn").style.display ="block";
+    document.getElementById("emailpassSignIn").style.display ="block";
   }
-})
+});
 
 const auth = firebase.auth();
