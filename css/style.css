@@ -7,6 +7,32 @@ body {
   font-family: Open-sans, sans-serif;
   font-size: 14px;
 }
+
+p {
+ 	font-size: 14px;	
+    color: black;
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+}
+
+.page{
+	padding: 10px;
+}
+
+#description{
+	height: 100%;
+}
+
+.signInBtn{
+	text-align: center;
+}
+
+
+#map {
+  height: 100% !important;
+  color: blue; 
+}
+
+
 #profilepic {
     border-radius: 50%;
     border-style: solid;
@@ -26,3 +52,20 @@ body {
 	align-items: center;
 	margin-bottom: 20px;
 }
+
+#navbar {
+  background-color: white;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  float: left;
+  text-align: center;
+  z-index: 999;
+}
+
+/* Make the list of links take up the whole width of the nav */
+
