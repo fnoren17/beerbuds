@@ -135,19 +135,32 @@
                     </pre>
                     <ul id="list"></ul>
 
-
-                    <progress value="0" max="100" id="uploader">0%</progress>
+                     <progress value="0" max="100" id="uploader">0%</progress>
                     <input type="file" value="upload" id="fileButton"/>
 
+                    <h1>Namn: </h1><h2 id= "Name"></h2>     
+                    <h1>Öl: </h1><h2 id="Beers"></h2>  
+
+
+                    <!--Input name-->
+                    <input id = "nameInput" class="mdl-textfield__input" placeholder = "Name"/> <button id = "submitNameBtn" class="btn btn-action" style="display:block"  onclick="submitNameClick()">Submit Name</button>
+
+                    <!--Input beer preference-->
+                    <input id = "beerInput" class="mdl-textfield__input" placeholder = "Beers"/>
+                    <button id = "submitBeerBtn" class="btn btn-action" style="display:block"  onclick="submitBeerClick()">Submit Beers</button>
+
+             
+
+
+                   
+
                     <input class="mdl-textfield__input" id="username" placeholder="Namn">                      
-                    <button id=´"SubmitName" class="btn btn-action" style="display:block">Submit</button><br/>
+                    <button id="SubmitName" class="btn btn-action" style="display:block">Submit</button><br/>
                     <input class="mdl-textfield__input" id="preference" placeholder = "Ölpreferens">
                     <button id="SubmitBeer" class="btn btn-action" style="display:block">Submit</button><br/>
 
 
-                    <input id = "mainText" class="mdl-textfield__input" placeholder = "Beskrivning">
-                    </textarea>
-                    <button id = "submitBtn" class="btn btn-action" style="display:block"  onclick="submitClick()">Test</button>
+
 
 
                 </div>

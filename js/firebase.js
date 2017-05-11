@@ -134,8 +134,9 @@ dbRefList.on("child_removed", snap=> {
   liToRemove.remove();
 });
 
-var mainText = document.getElementById("mainText");
-var submitBtn = document.getElementById("submitBtn");
+var nameInput = document.getElementById("nameInput");
+var submitNameBtn = document.getElementById("submitNameBtn");
+var submitBeerBtn = document.getElementById("submitBeerBtn");
 
 //Add files to storage
 //var storage = firebase.storage();
@@ -178,10 +179,38 @@ fileButton.addEventListener("change", function(e){
 
 
 //Add new data to firebase
-function submitClick() {
+function submitNameClick() {
   var firebaseRef = firebase.database().ref();
-  var messageText = mainText.value;
+  var messageText = nameInput.value;
 
-  firebaseRef.child("text").set(messageText)
+  firebaseRef.child("text").set(messageText) //.push().
+  //Retrieve data from firebase
+  var firebaseName = document.getElementById("Name");
 
+  var firebaseNameRef = firebase.database().ref().child("text")
+  firebaseNameRef.on("value", function(datasnapshot) {
+    Name.innerText = datasnapshot.val();
+  });
 }
+
+function submitBeerClick() {
+  var firebaseRef = firebase.database().ref();
+  var messageText = nameInput.value;
+
+  firebaseRef.child("beers").set(messageText) //.push().
+  //Retrieve data from firebase
+  var firebaseName = document.getElementById("Beers");
+
+  var firebaseNameRef = firebase.database().ref().child("beers")
+  firebaseNameRef.on("value", function(datasnapshot) {
+    Beers.innerText = datasnapshot.val();
+  });
+}
+
+// //Retrieve data from firebase
+// var firebaseName = document.getElementById("Name");
+
+// var firebaseNameRef = firebase.database().ref().child("text")
+// firebaseNameRef.on("value", function(datasnapshot) {
+// Name.innerText = datasnapshot.val();
+// });
