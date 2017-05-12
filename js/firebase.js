@@ -100,6 +100,7 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
   }
 });
 
+
 const auth = firebase.auth();
 
 function createID() {
@@ -115,6 +116,8 @@ function createID() {
     }
   });
 }
+
+
 var preObject = document.getElementById("object");
 var ulList = document.getElementById("list");
 
@@ -195,14 +198,14 @@ var googleSignIn = document.getElementById("googleSignIn")
 function createID() {
   firebase.auth().onAuthStateChanged((firebaseUser) => {
     if (firebaseUser) {
-      console.log(firebaseUser.uid);
       var userID = firebaseUser.uid;
       firebase.database().ref('users/' + userID).set({
         name: 'John Appleseed',
         beer1: 'lager',
         beer2: 'IPA',
         beer3: 'APA',
-        bio: 'Hi I am John'
+        bio: 'Hi I am John',
+        isActive: false
         });
     }
   });
@@ -238,4 +241,37 @@ var firebaseNameRef = firebase.database().ref().child("beers")
 firebaseNameRef.on("value", function(datasnapshot) {
   Beers.innerText = datasnapshot.val();
   console.log("beerS", Beers.innerText)
+});
+
+//Retrieve data from firebase
+function printName(){
+  var firebaseName = document.getElementById("Name");
+  var userID = auth.currentUser.uid;
+  var firebaseNameRef = firebase.database().ref('users/' + userID).child("name")
+  console.log("Ref: ",firebaseNameRef);
+  firebaseNameRef.on("value", function(datasnapshot) {
+    Name.innerText = datasnapshot.val();
+    console.log("Name: ", Name.innerText);
+  });
+}
+
+
+function printBeer(){
+  var firebaseName = document.getElementById("Beers");
+  var userID = auth.currentUser.uid;
+  var firebaseNameRef = firebase.database().ref('users/' + userID).child("beer1")
+  console.log("Ref: ",firebaseNameRef);
+  firebaseNameRef.on("value", function(datasnapshot) {
+    Beers.innerText = datasnapshot.val();
+    console.log("beer: ", Beers.innerText);
+  });
+}
+
+//Retrieve data from firebase
+var firebaseBeers = document.getElementById("Beers");
+
+var firebaseNameRef = firebase.database().ref().child("beers")
+firebaseNameRef.on("value", function(datasnapshot) {
+  Beers.innerText = datasnapshot.val();
+  console.log("beers", Beers.innerText)
 });
