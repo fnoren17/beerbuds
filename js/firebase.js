@@ -1,15 +1,14 @@
  // Initialize Firebase
-
-      var config = {
-        apiKey: "AIzaSyDxSvYZAvDu3U37hMZGuyxUvWfRT6WrDFc",
-        authDomain: "authentication-mobut-proj.firebaseapp.com",
-        databaseURL: "https://authentication-mobut-proj.firebaseio.com",
-        projectId: "authentication-mobut-proj",
-        storageBucket: "gs://authentication-mobut-proj.appspot.com",
-        messagingSenderId: "209640989261"
-      };
-      firebase.initializeApp(config);
-      //console.log("firebase: ",firebase)
+var config = {
+  apiKey: "AIzaSyDxSvYZAvDu3U37hMZGuyxUvWfRT6WrDFc",
+  authDomain: "authentication-mobut-proj.firebaseapp.com",
+  databaseURL: "https://authentication-mobut-proj.firebaseio.com",
+  projectId: "authentication-mobut-proj",
+  storageBucket: "authentication-mobut-proj.appspot.com",
+  messagingSenderId: "209640989261"
+};
+firebase.initializeApp(config);
+// console.log("firebase: ",firebase)
 
 //Login with google
 var provider = new firebase.auth.GoogleAuthProvider();
@@ -20,11 +19,13 @@ function googleSignin() {
    .signInWithPopup(provider).then(function(result) {
       var token = result.credential.accessToken;
       var user = result.user;
-      //console.log(token)
-      //console.log(user)
+		
+      // console.log(token)
+      // console.log(user)
    }).catch(function(error) {
       var errorCode = error.code;
       var errorMessage = error.message;
+		
       // console.log(error.code)
       // console.log(error.message)
    });
@@ -40,28 +41,6 @@ function googleSignout() {
    });
 }
 
-// function findBeerBuds() {
-//   console.log("Hej nu är vi i findBeerBuds");
-//   var firebaseobject =  firebase.database().ref().child('object')
-//   var dbNames = firebaseobject.child("Name");
-
-//   dbNames.on("child_added", snap => {
-//     var li = document.createElement('li');
-//     li.innerText = snap.val();
-//     li.id = snap.key;
-//     ulList.appendChild(li);
-//   });
-
-//   dbNames.on("child_changed", snap=> {
-//     var liChanged = document.getElementById(snap.key);
-//     liChanged.innerText = snap.val();
-//   });
-
-//   dbNames.on("child_removed", snap=> {
-//     var liToRemove = document.getElementById(snap.key);
-//     liToRemove.remove();
-//   });
-// }
 
 
 //Login without google
@@ -103,27 +82,39 @@ btnLogout.addEventListener("click", e =>{
 //Add a realtime listener
 firebase.auth().onAuthStateChanged(firebaseUser => {
   if(firebaseUser){
-
-    //console.log("firebaseUser: ",firebaseUser);
-
     btnLogout.style.display = "block";
     document.getElementById("googleSignIn").style.display ="none";
     document.getElementById("emailpassSignIn").style.display ="none";
+    document.getElementById("profile").style.display = "block";
+
+    // Show the navbar if logged in.
+    $('#navbar').css('display','flex');
   } else {
-    console.log("not logged in");
     btnLogout.style.display = "none";
     document.getElementById("googleSignIn").style.display ="block";
     document.getElementById("emailpassSignIn").style.display ="block";
+    document.getElementById("profile").style.display = "none";
+
+    // Hide navbar if not logged in
+    $('#navbar').hide();
   }
 });
 
 const auth = firebase.auth();
 
-
-
-
-//Add data to database
-//Get elements
+function createID() {
+  firebase.auth().onAuthStateChanged((firebaseUser) => {
+    if (firebaseUser) {
+      // console.log(firebaseUser);
+      var userID = firebaseUser.uid;
+      firebase.database().ref('users/' + userID).update({
+        name: firebaseUser.displayName
+        // This is the only thing we need from go3ogle when logging in for the first time. 
+        // We can set the rest of the properties in profile page later.
+        });
+    }
+  });
+}
 var preObject = document.getElementById("object");
 var ulList = document.getElementById("list");
 
@@ -248,11 +239,3 @@ firebaseNameRef.on("value", function(datasnapshot) {
   Beers.innerText = datasnapshot.val();
   console.log("beerS", Beers.innerText)
 });
-
-// //Retrieve data from firebase
-// var firebaseName = document.getElementById("Name");
-
-// var firebaseNameRef = firebase.database().ref().child("text")
-// firebaseNameRef.on("value", function(datasnapshot) {
-// Name.innerText = datasnapshot.val();
-// });
