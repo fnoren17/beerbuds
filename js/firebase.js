@@ -86,6 +86,8 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
     document.getElementById("googleSignIn").style.display ="none";
     document.getElementById("emailpassSignIn").style.display ="none";
     document.getElementById("profile").style.display = "block";
+    printName();
+    printBeer();
 
     // Show the navbar if logged in.
     $('#navbar').css('display','flex');
@@ -194,41 +196,63 @@ fileButton.addEventListener("change", function(e){
 var googleSignIn = document.getElementById("googleSignIn")
 function createID() {
   firebase.auth().onAuthStateChanged((firebaseUser) => {
-    if (firebaseUser) {
-      console.log(firebaseUser.uid);
-      var userID = firebaseUser.uid;
-      firebase.database().ref('users/' + userID).set({
-        name: 'John Appleseed',
-        beer1: 'lager',
-        beer2: 'IPA',
-        beer3: 'APA',
-        bio: 'Hi I am John'
-        });
-    }
+    // if (firebaseUser) {
+    //   console.log(firebaseUser.uid);
+    //   var userID = firebaseUser.uid;
+    //   // firebase.database().ref('users/' + userID).set({
+    //   //   name: 'John Appleseed',
+    //   //   beer1: 'lager',
+    //   //   beer2: 'IPA',
+    //   //   beer3: 'APA',
+    //   //   bio: 'Hi I am John'
+    //   //   });
+    // }
+  });
+}
+
+//Add new data to firebase
+function submitNameClick() {
+  var userID = auth.currentUser.uid;
+  var firebaseRef = firebase.database().ref('users/' + userID);
+  var messageText = nameInput.value;
+
+  firebaseRef.update({
+    name: messageText
+  }); //.push().
+}
+
+function submitBeerClick() {
+  var userID = auth.currentUser.uid;
+  var firebaseRef = firebase.database().ref('users/' + userID);
+  var messageText = beerInput.value;
+
+  firebaseRef.update({
+    beer1: messageText
+  }); //.push().
+}
+
+//Retrieve data from firebase
+function printName(){
+  var firebaseName = document.getElementById("Name");
+  var userID = auth.currentUser.uid;
+  var firebaseNameRef = firebase.database().ref('users/' + userID).child("name")
+  console.log("Ref: ",firebaseNameRef);
+  firebaseNameRef.on("value", function(datasnapshot) {
+    Name.innerText = datasnapshot.val();
+    console.log("Name: ", Name.innerText);
   });
 }
 
 
-//Add new data to firebase
-function submitNameClick() {
-  var firebaseRef = firebase.database().ref();
-  var messageText = nameInput.value;
-
-  firebaseRef.child("text").set(messageText) //.push().
-}
-//Retrieve data from firebase
-var firebaseName = document.getElementById("Name");
-
-var firebaseNameRef = firebase.database().ref().child("text")
-firebaseNameRef.on("value", function(datasnapshot) {
-  Name.innerText = datasnapshot.val();
-});
-
-function submitBeerClick() {
-  var firebaseRef = firebase.database().ref();
-  var messageText = beerInput.value;
-
-  firebaseRef.child("beers").set(messageText) //.push().
+function printBeer(){
+  var firebaseName = document.getElementById("Beers");
+  var userID = auth.currentUser.uid;
+  var firebaseNameRef = firebase.database().ref('users/' + userID).child("beer1")
+  console.log("Ref: ",firebaseNameRef);
+  firebaseNameRef.on("value", function(datasnapshot) {
+    Beers.innerText = datasnapshot.val();
+    console.log("beer: ", Beers.innerText);
+  });
 }
 
 //Retrieve data from firebase
@@ -237,5 +261,5 @@ var firebaseBeers = document.getElementById("Beers");
 var firebaseNameRef = firebase.database().ref().child("beers")
 firebaseNameRef.on("value", function(datasnapshot) {
   Beers.innerText = datasnapshot.val();
-  console.log("beerS", Beers.innerText)
+  console.log("beers", Beers.innerText)
 });
