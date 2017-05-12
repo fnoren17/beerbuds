@@ -23,8 +23,8 @@ beer.addEventListener('click',function(){
       position: {"lat":lat,"lng": lng},
       isActive: true
     });
-    time = Date().getTime();
-    console.log(time);
+    // time = Date().getTime();
+    // console.log(time);
 
     deleteMarkers();
     var marker = new google.maps.Marker({
@@ -38,8 +38,7 @@ beer.addEventListener('click',function(){
     marker.addListener('dragend',function(){
       console.log('Updating users current position');
       firebase.database().ref('users/' + userID).update({
-        position: {"lat":marker.position.lat(),"lng": marker.position.lng()},
-        isActive: true
+        position: {"lat":marker.position.lat(),"lng": marker.position.lng()}
       });
     });
 });
