@@ -82,13 +82,10 @@ btnLogout.addEventListener("click", e =>{
 //Add a realtime listener
 firebase.auth().onAuthStateChanged(firebaseUser => {
   if(firebaseUser){
-    console.log("firebaseUser: ",firebaseUser);
-    console.log('logged in');
     btnLogout.style.display = "block";
     document.getElementById("googleSignIn").style.display ="none";
     document.getElementById("emailpassSignIn").style.display ="none";
   } else {
-    console.log("not logged in");
     btnLogout.style.display = "none";
     document.getElementById("googleSignIn").style.display ="block";
     document.getElementById("emailpassSignIn").style.display ="block";
@@ -96,3 +93,17 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
 });
 
 const auth = firebase.auth();
+
+function createID() {
+  firebase.auth().onAuthStateChanged((firebaseUser) => {
+    if (firebaseUser) {
+      // console.log(firebaseUser);
+      var userID = firebaseUser.uid;
+      firebase.database().ref('users/' + userID).update({
+        name: firebaseUser.displayName
+        // This is the only thing we need from google when logging in for the first time. 
+        // We can set the rest of the properties in profile page later.
+        });
+    }
+  });
+}

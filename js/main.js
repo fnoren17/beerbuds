@@ -11,6 +11,5 @@ $(document).ready(function() {
 		$(currentpage).hide()
 		targetpage.show();
 		currentpage = targetpage;
-		console.log('show');
 	}
 });

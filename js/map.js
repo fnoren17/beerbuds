@@ -14,6 +14,15 @@ $(document).ready(function() {
 });
   
 beer.addEventListener('click',function(){
+    // Get user Id in order to update database
+    var userID = auth.currentUser.uid;
+    var center = map.getCenter();
+    var lat = center.lat();
+    var lng = center.lng();
+    firebase.database().ref('users/' + userID).update({
+      position: {"lat":lat,"lng": lng}
+    });
+
     deleteMarkers();
     var marker = new google.maps.Marker({
       position: map.getCenter(),
@@ -24,8 +33,10 @@ beer.addEventListener('click',function(){
     });
     markers.push(marker);
     marker.addListener('dragend',function(){
-      console.log('Here we can update the position');
-      console.log(marker.position);
+      console.log('Updating users current position');
+      firebase.database().ref('users/' + userID).update({
+        position: {"lat":marker.position.lat(),"lng": marker.position.lng()}
+      });
     });
 });
 function initMap() {
@@ -58,9 +69,10 @@ function setCenter(){
   } else {
     // Browser doesn't support Geolocation
     handleLocationError(false, map.getCenter());
+  }
 }
+
 
 function handleLocationError(browserHasGeolocation, pos) {
     alert('no geolocation');
-}
 }
