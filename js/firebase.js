@@ -9,9 +9,18 @@ var config = {
 };
 firebase.initializeApp(config);
 // console.log("firebase: ",firebase)
-
 //Login with google
 var provider = new firebase.auth.GoogleAuthProvider();
+
+  var ref = firebase.database().ref("users");
+  var users = [];
+  ref.orderByKey().on("child_added", function(snapshot) {
+    users.push(snapshot.key);
+  });
+  
+
+
+
 
 function googleSignin() {
    firebase.auth()
@@ -19,7 +28,6 @@ function googleSignin() {
    .signInWithPopup(provider).then(function(result) {
       var token = result.credential.accessToken;
       var user = result.user;
-		
       // console.log(token)
       // console.log(user)
    }).catch(function(error) {
@@ -125,10 +133,10 @@ var dbRefObject = firebase.database().ref().child("object");
 var dbRefList = dbRefObject.child("Hobbies");
 
 
-//Sync object changes
-dbRefObject.on("value", snap => {
-  preObject.innerText = JSON.stringify(snap.val(),null,3)
-});
+// //Sync object changes
+// dbRefObject.on("value", snap => {
+//   preObject.innerText = JSON.stringify(snap.val(),null,3)
+// });
 
 
 //Changing the database
@@ -255,11 +263,3 @@ function printBeer(){
   });
 }
 
-//Retrieve data from firebase
-var firebaseBeers = document.getElementById("Beers");
-
-var firebaseNameRef = firebase.database().ref().child("beers")
-firebaseNameRef.on("value", function(datasnapshot) {
-  Beers.innerText = datasnapshot.val();
-  console.log("beers", Beers.innerText)
-});
