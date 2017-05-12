@@ -85,10 +85,16 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
     btnLogout.style.display = "block";
     document.getElementById("googleSignIn").style.display ="none";
     document.getElementById("emailpassSignIn").style.display ="none";
+
+    // Show the navbar if logged in.
+    $('#navbar').css('display','flex');
   } else {
     btnLogout.style.display = "none";
     document.getElementById("googleSignIn").style.display ="block";
     document.getElementById("emailpassSignIn").style.display ="block";
+
+    // Hide navbar if not logged in
+    $('#navbar').hide();
   }
 });
 
@@ -101,7 +107,7 @@ function createID() {
       var userID = firebaseUser.uid;
       firebase.database().ref('users/' + userID).update({
         name: firebaseUser.displayName
-        // This is the only thing we need from google when logging in for the first time. 
+        // This is the only thing we need from go3ogle when logging in for the first time. 
         // We can set the rest of the properties in profile page later.
         });
     }
