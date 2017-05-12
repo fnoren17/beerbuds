@@ -35,167 +35,139 @@
     <body>
         <!--..............................................STARTSIDA......................................-->
         <div class="container">
-            <div id="flex" class="col-12" style="margin-top:20px;"><h1><i class="fa fa-beer fa-2x"></i> BeerBuds</h1></div>
-
+            <div id="flex" class="col-12" style="margin-top:20px;">
+                <h1><i class="fa fa-beer fa-2x"></i> BeerBuds</h1>
+            </div>
             <div class id="page1">
-
-                <main class="mdl-layout__content">
                     <div class="page-content">
                         <div class="page">
                             <p>Have you ever wanted to drink but all of your friends want to have a sober and boring day? Don't fear, there is more people in the town who wants to drink and they want YOU to join them for a son of a bitch or two.</p>
                         </div>
                     </div>
-
-              <div id="showMessages"></div>
-
-
-            <!--Login-->
-            <div class="email/passSignIn">
-                <input id=txtEmail class="mdl-textfield__input" type = "email" placeholder = "Email">
-                <input id="txtPassword" class="mdl-textfield__input" type = "password" placeholder ="Password"></br>
-                <button id="btnLogin" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Login</button>
-                <button id="btnSignUp" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Sign Up</button>
+                <div id="emailpassSignIn" class="email/passSignIn">
+                    <input id=txtEmail class="mdl-textfield__input" type = "email" placeholder = "Email">
+                    <input id="txtPassword" class="mdl-textfield__input" type = "password" placeholder ="Password"></br>
+                    <button id="btnLogin" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Login</button>
+                    <button id="btnSignUp" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Sign Up</button>
+                </div>
                 <div class = "googleSignIn" id = "googleSignIn" style="display:block"></br>
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="createID();googleSignin()">Sign In With Google</button>
-                </div>
-                <button id="btnLogout" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="display:none">Log out</button>
-                <button id="btnLogout" class="btn btn-action" style="display:none">Log out</button>
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="createID();googleSignin()">Sign In With Google</button>
+                    </div>
+                    <button id="btnLogout" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="display:none">Log out</button>
+
+                    <div id="profile" style="display: none">
+                        <div class="container" id="page1" style="font-family: 'Avenir Next';">
+                            <ul id="list"></ul>
+                            <!--.storage(). not working-->
+                            <progress value="0" max="100" id="uploader">0%</progress>
+                            <input type="file" value="upload" id="fileButton"/>
+
+                            <h1>Name: </h1><h2 id= "Name"></h2>     
+                            <h1>Beer: </h1><h2 id="Beers"></h2>  
+
+                            <!--Input name-->
+                            <input id = "nameInput" class="mdl-textfield__input" placeholder = "Name"/> <button id = "submitNameBtn" class="btn btn-action" style="display:block"  onclick="submitNameClick()">Submit Name</button>
+
+                            <!--Input beer preference-->
+                            <input id = "beerInput" class="mdl-textfield__input" placeholder = "Beers"/>
+                            <button id = "submitBeerBtn" class="btn btn-action" style="display:block"  onclick="submitBeerClick()">Submit Beers</button><br/>
+                        </div>
+                    </div>
             </div>
-
-            <!--ProfilePage-->
-            <div>
-
-            </div>
-        </div>
-    
-
-
-        <!--Feed of beerguys-->
             <div id="page2" style="display: none">
-                <div class="container" id="page1" style="font-family: 'Avenir Next';">
-                    <div class="col-12" style="margin-top: 40px; margin-bottom: 40px">
-                        <h2 style="text-align: center;">PEOPLE HUNGRY FOR BEER</h2>
-                    </div>
+                <div class="col-12" style="margin-top: 40px; margin-bottom: 40px">
+                    <h2 style="text-align: center;">PEOPLE HUNGRY FOR BEER</h2>
+                </div>
 
-                    <div class="col-12">
-
+                <div class="col-12">
                     <!-- Följande HTML ska genereras dynamiskt av datan som folk sänder -->
+                    <ul>
                         <div class="row" id="flex" style="border: 1px solid black; border-radius: 5px;">
-                            <div class="col-4">
+                             <div class="col-8" style="font-size: 10pt">
+                                <b id = "nameOfUsers"></b> wants to get his drink on<br/>
+                            </div>
+                        </div>
+                        <div class="row" id="flex" style="border: 1px solid black; border-radius: 5px;"></div>
+                    </ul>
+                     
+                    <div class="row" id="flex" style="border: 1px solid black; border-radius: 5px;">
+                        <div class="col-4">
                             <img src="https://scontent-arn2-1.xx.fbcdn.net/v/t31.0-8/15128952_10207573719443039_6551904099240725029_o.jpg?oh=3fb5df0585953f3bb5f5b8b42d67460a&oe=59B936A6" id="profilepic" width="100px" height="100px"></img>
-                            </div>
-                            <div class="col-8" style="font-size: 10pt">
-                            
-                            <b>Anton</b> wants to get his drink on <i></br>near Östermalmstorg</i>
-                            </br></br>
-                            Swipe right to start chatting >
-                            </div>
                         </div>
-
-                        <div class="row" id="flex" style="border: 1px solid black; border-radius: 5px;">
-                            <div class="col-4">
-                                <img src="https://scontent-arn2-1.xx.fbcdn.net/v/t1.0-9/15078592_1358866397459381_9081129757154095336_n.jpg?oh=988e54abe0c7e4ae624ea1bbb7839c3c&oe=5983B508" id="profilepic" width="100px" height="100px"></img>
-                            </div>
-                            <div class="col-8" style="font-size: 10pt">
-                                <b>Felix</b> wants to get his drink on <i></br>near Gamla Stan</i>
-                                </br></br>
-                                Swipe right to start chatting >
-                            </div>
-                        </div>
-
-                        <div class="row" id="flex" style="border: 1px solid black; border-radius: 5px;">
-                            <div class="col-4">
-                            <img src="https://scontent-arn2-1.xx.fbcdn.net/v/t1.0-9/18199189_1814366315241996_5354179833089832750_n.jpg?oh=538474762f5fdc890bb950a61c4159a6&oe=598B767C" id="profilepic" width="100px" height="100px"></img>
-                            </div>
-                            <div class="col-8" style="font-size: 10pt">
-                            
-                            <b>Erik</b> wants to get his drink on <i></br>near Södermalm</i>
-                            </br></br>
+                        <div class="col-8" style="font-size: 10pt">
+                            <b>Anton</b> wants to get his drink on <i><br/>near Östermalmstorg</i>
+                            <br/><br/>
                             Swipe right to start chatting >
-                            </div>
-                        </div>
-
-                        <div class="row" id="flex" style="border: 1px solid black; border-radius: 5px;">
-                            <div class="col-4">
-                            <img src="https://scontent-arn2-1.xx.fbcdn.net/v/t1.0-9/625654_10200719099717207_1321671622_n.jpg?oh=42c3d34228e1df9ecdcb674f134a9278&oe=598908DE" id="profilepic" width="100px" height="100px"></img>
-                            </div>
-                            <div class="col-8" style="font-size: 10pt">
-                            
-                            <b>Gustav</b> wants to get his drink on <i></br>near Gamla Stan</i>
-                            </br></br>
-                            Swipe right to start chatting >
-                            </div>
                         </div>
                     </div>
-             
+
+                    <div class="row" id="flex" style="border: 1px solid black; border-radius: 5px;">
+                        <div class="col-4">
+                            <img src="https://scontent-arn2-1.xx.fbcdn.net/v/t1.0-9/15078592_1358866397459381_9081129757154095336_n.jpg?oh=988e54abe0c7e4ae624ea1bbb7839c3c&oe=5983B508" id="profilepic" width="100px" height="100px"></img>
+                        </div>
+                        <div class="col-8" style="font-size: 10pt">
+                            <b>Felix</b> wants to get his drink on <i></br>near Gamla Stan</i>
+                            </br></br>
+                            Swipe right to start chatting >
+                        </div>
+                    </div>
+
+                    <div class="row" id="flex" style="border: 1px solid black; border-radius: 5px;">
+                        <div class="col-4">
+                        <img src="https://scontent-arn2-1.xx.fbcdn.net/v/t1.0-9/18199189_1814366315241996_5354179833089832750_n.jpg?oh=538474762f5fdc890bb950a61c4159a6&oe=598B767C" id="profilepic" width="100px" height="100px"></img>
+                        </div>
+                        <div class="col-8" style="font-size: 10pt">
+                        
+                        <b>Erik</b> wants to get his drink on <i></br>near Södermalm</i>
+                        </br></br>
+                        Swipe right to start chatting >
+                        </div>
+                    </div>
+
+                    <div class="row" id="flex" style="border: 1px solid black; border-radius: 5px;">
+                        <div class="col-4">
+                        <img src="https://scontent-arn2-1.xx.fbcdn.net/v/t1.0-9/625654_10200719099717207_1321671622_n.jpg?oh=42c3d34228e1df9ecdcb674f134a9278&oe=598908DE" id="profilepic" width="100px" height="100px"></img>
+                        </div>
+                        <div class="col-8" style="font-size: 10pt">
+                        
+                        <b>Gustav</b> wants to get his drink on <i></br>near Gamla Stan</i>
+                        </br></br>
+                        Swipe right to start chatting >
+                        </div>
+                    </div>
                 </div>
-            </div>
+                </div>
+
             <div id="page3" style="display: none">
-              <h1>Page 3</h1>
-              jehjaksdhjkad
-             </div>
-
-            <div id="page4" style="display: none">
-                <h1>Page 4</h1>
-                <div class="container" id="page1" style="font-family: 'Avenir Next';">
-
-
-                    <!--Testing-->
-                    <pre id="object">
-                    </pre>
-                    <ul id="list"></ul>
-
-                    <!--.storage(). not working-->
-                     <progress value="0" max="100" id="uploader">0%</progress>
-                    <input type="file" value="upload" id="fileButton"/>
-
-                    <h1>Namn: </h1><h2 id= "Name"></h2>     
-                    <h1>Öl: </h1><h2 id="Beers"></h2>  
-
-                    <p>funkar nu, ändra id:t att kolla i firebase.js för test</p>
-                    <button id = "testforUUID" onclick ="createID()">TestforUUID</button>
-
-                    <!--Input name-->
-                    <input id = "nameInput" class="mdl-textfield__input" placeholder = "Name"/> <button id = "submitNameBtn" class="btn btn-action" style="display:block"  onclick="submitNameClick()">Submit Name</button>
-
-                    <!--Input beer preference-->
-                    <input id = "beerInput" class="mdl-textfield__input" placeholder = "Beers"/>
-                    <button id = "submitBeerBtn" class="btn btn-action" style="display:block"  onclick="submitBeerClick()">Submit Beers</button><br/><p>test</p>
-
-
+                <h1>Map</h1>
+                <div id="map">
+                    <div id="marker">
+                    <button id="beer" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">I want beer!</button>
+                    </div>
                 </div>
             </div>
-
-          <div id="page5" style="display: none">
-              <h1>Page 3</h1>
-              settings
-          </div>
-
-
-        </main>
-
     </div>
 
     <div id="navbar">
-        <div class="col-2">
+        <div class="col-3">
             <a class="navBtn" targetpage="page1"><i class="fa fa-home fa-2x"></i></a>
         </div>
-        <div class="col-2">
-            <a class="navBtn" targetpage="page4"><i class="fa fa-user fa-2x"></i></a>
+        <div class="col-3">
+            <a class="navBtn" targetpage="page2" onclick="printNameToNewsfeed(); populateFeed()"><i class="fa fa-feed fa-2x"></i></a>
         </div>
-        <div class="col-2">
-            <a class="navBtn" targetpage="page2"><i class="fa fa-feed fa-2x"></i></a>
+        <div class="col-3">
+            <a id="js-show-map" class="navBtn" targetpage="page3"><i class="fa fa-map fa-2x"></i></a>
         </div>
-        <div class="col-2">
-            <a class="navBtn" targetpage="page3"><i class="fa fa-map fa-2x"></i></a>
-        </div>
-        <div class="col-2">
-            <a class="navBtn" targetpage="page5"><i class="fa fa-cog fa-2x"></i></a>
+        <div class="col-3">
+            <a class="navBtn" targetpage="page4"><i class="fa fa-cog fa-2x"></i></a>
         </div>
     </div>
-
-        <!--..............................................STARTSIDA SLUT.................................-->
-        <script src="js/firebase.js"></script>
-        <script src="js/main.js"></script>    
-    </body>   
+    <!--..............................................STARTSIDA SLUT.................................-->
+    <script src="js/firebase.js"></script>
+    <script src="js/main.js"></script> 
+    <script src="js/map.js"></script>
+    <script src="js/newsfeed.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCn2-5FWdpedj1ktxvGM76HqCySwBUPOpI&callback=initMap"
+async defer></script>   
+</body>   
 </html>

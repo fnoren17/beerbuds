@@ -1,15 +1,14 @@
  // Initialize Firebase
-      var config = {
-        apiKey: "AIzaSyDxSvYZAvDu3U37hMZGuyxUvWfRT6WrDFc",
-        authDomain: "authentication-mobut-proj.firebaseapp.com",
-        databaseURL: "https://authentication-mobut-proj.firebaseio.com",
-        projectId: "authentication-mobut-proj",
-        storageBucket: "gs://authentication-mobut-proj.appspot.com",
-        messagingSenderId: "209640989261"
-      };
-      firebase.initializeApp(config);
-      //console.log("firebase: ",firebase)
-
+var config = {
+  apiKey: "AIzaSyDxSvYZAvDu3U37hMZGuyxUvWfRT6WrDFc",
+  authDomain: "authentication-mobut-proj.firebaseapp.com",
+  databaseURL: "https://authentication-mobut-proj.firebaseio.com",
+  projectId: "authentication-mobut-proj",
+  storageBucket: "authentication-mobut-proj.appspot.com",
+  messagingSenderId: "209640989261"
+};
+firebase.initializeApp(config);
+// console.log("firebase: ",firebase)
 
 //Login with google
 var provider = new firebase.auth.GoogleAuthProvider();
@@ -21,14 +20,14 @@ function googleSignin() {
       var token = result.credential.accessToken;
       var user = result.user;
 		
-      //console.log(token)
-      //console.log(user)
+      // console.log(token)
+      // console.log(user)
    }).catch(function(error) {
       var errorCode = error.code;
       var errorMessage = error.message;
 		
-      console.log(error.code)
-      console.log(error.message)
+      // console.log(error.code)
+      // console.log(error.message)
    });
 }
 
@@ -83,25 +82,41 @@ btnLogout.addEventListener("click", e =>{
 //Add a realtime listener
 firebase.auth().onAuthStateChanged(firebaseUser => {
   if(firebaseUser){
-    //console.log("firebaseUser: ",firebaseUser);
     btnLogout.style.display = "block";
     document.getElementById("googleSignIn").style.display ="none";
-    document.getElementById("email/passSignIn").style.display ="none";
+    document.getElementById("emailpassSignIn").style.display ="none";
+    document.getElementById("profile").style.display = "block";
+    printName();
+    printBeer();
+
+    // Show the navbar if logged in.
+    $('#navbar').css('display','flex');
   } else {
-    console.log("not logged in");
     btnLogout.style.display = "none";
     document.getElementById("googleSignIn").style.display ="block";
-    document.getElementById("email/passSignIn").style.display ="block";
+    document.getElementById("emailpassSignIn").style.display ="block";
+    document.getElementById("profile").style.display = "none";
+
+    // Hide navbar if not logged in
+    $('#navbar').hide();
   }
-})
+});
 
 const auth = firebase.auth();
 
-
-
-
-//Add data to database
-//Get elements
+function createID() {
+  firebase.auth().onAuthStateChanged((firebaseUser) => {
+    if (firebaseUser) {
+      // console.log(firebaseUser);
+      var userID = firebaseUser.uid;
+      firebase.database().ref('users/' + userID).update({
+        name: firebaseUser.displayName
+        // This is the only thing we need from go3ogle when logging in for the first time. 
+        // We can set the rest of the properties in profile page later.
+        });
+    }
+  });
+}
 var preObject = document.getElementById("object");
 var ulList = document.getElementById("list");
 
@@ -147,7 +162,7 @@ fileButton.addEventListener("change", function(e){
   //Get file
   var file = e.target.files[0];
   //console.log("firebasestorage: ", firebase.storage().ref("sweet_gifs/"));
-  console.log("firebase: ", firebase)
+  //console.log("firebase: ", firebase)
 
   //Create a storage ref
   var storageRef = firebase.storage().ref("ProfilePic/").child(file.name);
@@ -180,40 +195,63 @@ fileButton.addEventListener("change", function(e){
 //Create ID to database with your UUID
 var googleSignIn = document.getElementById("googleSignIn")
 function createID() {
-  var firebaseRef = firebase.database().ref();
   firebase.auth().onAuthStateChanged((firebaseUser) => {
-    if (firebaseUser) {
-      console.log(firebaseUser.uid);
-      var userID = firebaseUser.uid;
-      firebaseRef.child("Users").set(userID);
-    }
+    // if (firebaseUser) {
+    //   console.log(firebaseUser.uid);
+    //   var userID = firebaseUser.uid;
+    //   // firebase.database().ref('users/' + userID).set({
+    //   //   name: 'John Appleseed',
+    //   //   beer1: 'lager',
+    //   //   beer2: 'IPA',
+    //   //   beer3: 'APA',
+    //   //   bio: 'Hi I am John'
+    //   //   });
+    // }
   });
-  //var userID = googleSignIn.value;
-  //console.log("UserID: ",userID)
-  //firebaseRef.push().set(userID)
 }
-
 
 //Add new data to firebase
 function submitNameClick() {
-  var firebaseRef = firebase.database().ref();
+  var userID = auth.currentUser.uid;
+  var firebaseRef = firebase.database().ref('users/' + userID);
   var messageText = nameInput.value;
 
-  firebaseRef.child("text").set(messageText) //.push().
+  firebaseRef.update({
+    name: messageText
+  }); //.push().
 }
-//Retrieve data from firebase
-var firebaseName = document.getElementById("Name");
-
-var firebaseNameRef = firebase.database().ref().child("text")
-firebaseNameRef.on("value", function(datasnapshot) {
-  Name.innerText = datasnapshot.val();
-});
 
 function submitBeerClick() {
-  var firebaseRef = firebase.database().ref();
+  var userID = auth.currentUser.uid;
+  var firebaseRef = firebase.database().ref('users/' + userID);
   var messageText = beerInput.value;
 
-  firebaseRef.child("beers").set(messageText) //.push().
+  firebaseRef.update({
+    beer1: messageText
+  }); //.push().
+}
+
+//Retrieve data from firebase
+function printName(){
+  var firebaseName = document.getElementById("Name");
+  var userID = auth.currentUser.uid;
+  var firebaseNameRef = firebase.database().ref('users/' + userID).child("name")
+  //console.log("Ref: ",firebaseNameRef);
+  firebaseNameRef.on("value", function(datasnapshot) {
+    Name.innerText = datasnapshot.val();
+    //console.log("Name: ", Name.innerText);
+  });
+}
+
+function printBeer(){
+  var firebaseName = document.getElementById("Beers");
+  var userID = auth.currentUser.uid;
+  var firebaseNameRef = firebase.database().ref('users/' + userID).child("beer1")
+  //console.log("Ref: ",firebaseNameRef);
+  firebaseNameRef.on("value", function(datasnapshot) {
+    Beers.innerText = datasnapshot.val();
+    //console.log("beer: ", Beers.innerText);
+  });
 }
 
 //Retrieve data from firebase
@@ -222,13 +260,5 @@ var firebaseBeers = document.getElementById("Beers");
 var firebaseNameRef = firebase.database().ref().child("beers")
 firebaseNameRef.on("value", function(datasnapshot) {
   Beers.innerText = datasnapshot.val();
-  console.log("beerS", Beers.innerText)
+  //console.log("beers", Beers.innerText)
 });
-
-// //Retrieve data from firebase
-// var firebaseName = document.getElementById("Name");
-
-// var firebaseNameRef = firebase.database().ref().child("text")
-// firebaseNameRef.on("value", function(datasnapshot) {
-// Name.innerText = datasnapshot.val();
-// });
