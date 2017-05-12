@@ -21,7 +21,7 @@ ref.orderByChild("isActive").equalTo(true).on("child_added", function(snapshot) 
 }
 
 function testfunc(snapshot) {
-	var firebaseName = document.getElementById("nameOfUsers");
+	var firebaseName = document.getElementById("activeUsers");
 	firebaseName.innerText += snapshot.child("name").val();
 
   // var userID = auth.currentUser.uid;
