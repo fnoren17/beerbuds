@@ -1,9 +1,14 @@
 function populateFeed() {
 
-firebase.database().ref('/users/').on('value', function(snapshot) {
-	snapshot.forEach(function(childSnapshot) {
-		console.log(childSnapshot.A.k.ba.left);
-		});
+var ref = firebase.database().ref("users/");
+ref.orderByChild("isActive").equalTo(true).on("child_added", function(snapshot) {
+	var activeUsers = [];
+	snapshot.forEach(activeUsers.push(snapshot.key);
 
+		console.log(snapshot);
+		var firebaseNameRef = firebase.database().ref('users/' + userID).child("name")
+		console.log(firebaseNameRef);
+	});
 });
+
 }
