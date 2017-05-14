@@ -19,9 +19,6 @@ var provider = new firebase.auth.GoogleAuthProvider();
   });
   
 
-
-
-
 function googleSignin() {
    firebase.auth()
    
@@ -110,6 +107,7 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
   }
 });
 
+
 const auth = firebase.auth();
 
 function createID() {
@@ -125,6 +123,8 @@ function createID() {
     }
   });
 }
+
+
 var preObject = document.getElementById("object");
 var ulList = document.getElementById("list");
 
@@ -204,17 +204,17 @@ fileButton.addEventListener("change", function(e){
 var googleSignIn = document.getElementById("googleSignIn")
 function createID() {
   firebase.auth().onAuthStateChanged((firebaseUser) => {
-    // if (firebaseUser) {
-    //   console.log(firebaseUser.uid);
-    //   var userID = firebaseUser.uid;
-    //   // firebase.database().ref('users/' + userID).set({
-    //   //   name: 'John Appleseed',
-    //   //   beer1: 'lager',
-    //   //   beer2: 'IPA',
-    //   //   beer3: 'APA',
-    //   //   bio: 'Hi I am John'
-    //   //   });
-    // }
+    if (firebaseUser) {
+      var userID = firebaseUser.uid;
+      firebase.database().ref('users/' + userID).set({
+        name: 'John Appleseed',
+        beer1: 'lager',
+        beer2: 'IPA',
+        beer3: 'APA',
+        bio: 'Hi I am John',
+        isActive: false
+        });
+    }
   });
 }
 
@@ -262,4 +262,3 @@ function printBeer(){
     console.log("beer: ", Beers.innerText);
   });
 }
-
