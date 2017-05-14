@@ -28,7 +28,7 @@ p {
 
 
 #map {
-  height: 300px;
+  height: 100%;
   width: 100%;
 }
 
@@ -67,16 +67,18 @@ p {
   z-index: 999;
 }
 
+
+.demo-list-control {
+  width: 300px;
+}
+
+.demo-list-radio {
+  display: inline;
+}
+
 #page3 {
   height: 100%;
 }
 
-.container {
-  margin-bottom: 75px;
-}
-
-#navbar {
-  display: none;
-}
 
 /* Make the list of links take up the whole width of the nav */
