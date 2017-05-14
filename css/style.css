@@ -40,10 +40,11 @@ p {
     border-color: white;
     border-width: 3px;
 }
+
 #flex {
 	display: flex;
-  	align-items: center;
-  	justify-content: center;
+  align-items: center;
+  justify-content: center;
 }
 
 .row {

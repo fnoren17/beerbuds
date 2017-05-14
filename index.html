@@ -41,7 +41,8 @@
             <div class id="page1">
                     <div class="page-content">
                         <div class="page">
-                            <p>Have you ever wanted to drink but all of your friends want to have a sober and boring day? Don't fear, there is more people in the town who wants to drink and they want YOU to join them for a son of a bitch or two.</p>
+                            <p id="beerbudsIntro">Have you ever wanted to drink but all of your friends want to have a sober and boring day? Don't fear, there is more people in the town who wants to drink and they want YOU to join them for a son of a bitch or two.</p>
+                            <div id="welcomeBack">Welcome back to BeerBuds! Logged in as: </div> <b><div id="Name"></div></b>
                         </div>
                     </div>
                 <div id="emailpassSignIn" class="email/passSignIn">
@@ -53,26 +54,18 @@
                 <div class = "googleSignIn" id = "googleSignIn" style="display:block"></br>
                         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="createID();googleSignin();">Sign In With Google</button>
                     </div>
-                    <button id="btnLogout" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="display:none">Log out</button>
 
                     <div id="profile" style="display: none">
                         <div class="container" id="page1" style="font-family: 'Avenir Next';">
                             <ul id="list"></ul>
                             <!--.storage(). not working-->
-                            <progress value="0" max="100" id="uploader">0%</progress>
+                            <!-- <progress value="0" max="100" id="uploader">0%</progress>
                             <input type="file" value="upload" id="fileButton"/>
-
-                            <h1>Name: </h1><h2 id= "Name"></h2>     
-                            <h1>Beer: </h1><h2 id="Beers"></h2>  
-
-                            <!--Input name-->
-                            <input id = "nameInput" class="mdl-textfield__input" placeholder = "Name"/> <button id = "submitNameBtn" class="btn btn-action" style="display:block"  onclick="submitNameClick()">Submit Name</button>
-
-                            <!--Input beer preference-->
-                            <input id = "beerInput" class="mdl-textfield__input" placeholder = "Beers"/>
-                            <button id = "submitBeerBtn" class="btn btn-action" style="display:block"  onclick="submitBeerClick()">Submit Beers</button><br/>
+ -->
+                            <button id="btnLogout" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="display:none">Log out</button>
                         </div>
                     </div>
+
             </div>
             <div id="page2" style="display: none">
                 <div class="col-12" style="margin-top: 40px; margin-bottom: 40px">
@@ -101,6 +94,20 @@
                     Dark Mode: <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-1">
                     <input type="checkbox" id="switch-1" class="mdl-switch__input" checked />
                     </div>
+<!--                     </br><h3>Name: </h3> -->
+                    </br><h3>Favorite beertype: </h3><div id="Beer1"></div>  
+                    </br><h3>Second favorite beertype: </h3><div id="Beer2"></div>  
+                    </br><h3>Third favorite beertype: </h3><div id="Beer3"></div>  
+
+                    <!--Input name-->
+                    <!-- <input id = "nameInput" class="mdl-textfield__input" placeholder = "Name"/> <button id = "submitNameBtn" class="btn btn-action" style="display:block"  onclick="submitNameClick()">Submit Name</button> -->
+
+                    <!--Input beer preference-->
+                    </br></br><h1>Change your favorite beers</h1>
+                    <input id = "beer1Input" class="mdl-textfield__input" placeholder = "Favorite beer"/>
+                    <input id = "beer2Input" class="mdl-textfield__input" placeholder = "Second favorite beer"/>
+                    <input id = "beer3Input" class="mdl-textfield__input" placeholder = "Third favorite beer"/>
+                    <button id = "submitBeerBtn" class="btn btn-action" style="display:block"  onclick="submitBeerClick()">Submit Beers</button><br/>
                 </div>
             </div>
     </div>

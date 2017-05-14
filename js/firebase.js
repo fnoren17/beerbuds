@@ -90,17 +90,25 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
     btnLogout.style.display = "block";
     document.getElementById("googleSignIn").style.display ="none";
     document.getElementById("emailpassSignIn").style.display ="none";
+    document.getElementById("beerbudsIntro").style.display ="none";
     document.getElementById("profile").style.display = "block";
+    document.getElementById("welcomeBack").style.display = "block";
+
     printName();
     printBeer();
 
     // Show the navbar if logged in.
     $('#navbar').css('display','flex');
+
   } else {
     btnLogout.style.display = "none";
     document.getElementById("googleSignIn").style.display ="block";
     document.getElementById("emailpassSignIn").style.display ="block";
     document.getElementById("profile").style.display = "none";
+    document.getElementById("beerbudsIntro").style.display ="block";
+    document.getElementById("welcomeBack").style.display = "none";
+
+
 
     // Hide navbar if not logged in
     $('#navbar').hide();
@@ -232,10 +240,14 @@ function submitNameClick() {
 function submitBeerClick() {
   var userID = auth.currentUser.uid;
   var firebaseRef = firebase.database().ref('users/' + userID);
-  var messageText = beerInput.value;
+  var messageText = beer1Input.value;
+  var messageText2 = beer2Input.value;
+  var messageText3 = beer3Input.value;
 
   firebaseRef.update({
-    beer1: messageText
+    beer1: messageText,
+    beer2: messageText2,
+    beer3: messageText3
   }); //.push().
 }
 
@@ -253,12 +265,27 @@ function printName(){
 
 
 function printBeer(){
-  var firebaseName = document.getElementById("Beers");
+  var firebaseName = document.getElementById("Beer1");
+  var firebaseName = document.getElementById("Beer2");
+  var firebaseName = document.getElementById("Beer3");
   var userID = auth.currentUser.uid;
+
   var firebaseNameRef = firebase.database().ref('users/' + userID).child("beer1")
   console.log("Ref: ",firebaseNameRef);
   firebaseNameRef.on("value", function(datasnapshot) {
-    Beers.innerText = datasnapshot.val();
-    console.log("beer: ", Beers.innerText);
+    Beer1.innerText = datasnapshot.val();
+    console.log("beer: ", Beer1.innerText);
+  });
+  var firebaseNameRef = firebase.database().ref('users/' + userID).child("beer2")
+  console.log("Ref: ",firebaseNameRef);
+  firebaseNameRef.on("value", function(datasnapshot) {
+    Beer2.innerText = datasnapshot.val();
+    console.log("beer: ", Beer2.innerText);
+  });
+  var firebaseNameRef = firebase.database().ref('users/' + userID).child("beer3")
+  console.log("Ref: ",firebaseNameRef);
+  firebaseNameRef.on("value", function(datasnapshot) {
+    Beer3.innerText = datasnapshot.val();
+    console.log("beer: ", Beer3.innerText);
   });
 }
