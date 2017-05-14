@@ -9,9 +9,15 @@ var config = {
 };
 firebase.initializeApp(config);
 // console.log("firebase: ",firebase)
-
 //Login with google
 var provider = new firebase.auth.GoogleAuthProvider();
+
+  var ref = firebase.database().ref("users");
+  var users = [];
+  ref.orderByKey().on("child_added", function(snapshot) {
+    users.push(snapshot.key);
+  });
+  
 
 function googleSignin() {
    firebase.auth()
@@ -19,7 +25,6 @@ function googleSignin() {
    .signInWithPopup(provider).then(function(result) {
       var token = result.credential.accessToken;
       var user = result.user;
-		
       // console.log(token)
       // console.log(user)
    }).catch(function(error) {
@@ -86,6 +91,8 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
     document.getElementById("googleSignIn").style.display ="none";
     document.getElementById("emailpassSignIn").style.display ="none";
     document.getElementById("profile").style.display = "block";
+    printName();
+    printBeer();
 
     // Show the navbar if logged in.
     $('#navbar').css('display','flex');
@@ -126,10 +133,10 @@ var dbRefObject = firebase.database().ref().child("object");
 var dbRefList = dbRefObject.child("Hobbies");
 
 
-//Sync object changes
-dbRefObject.on("value", snap => {
-  preObject.innerText = JSON.stringify(snap.val(),null,3)
-});
+// //Sync object changes
+// dbRefObject.on("value", snap => {
+//   preObject.innerText = JSON.stringify(snap.val(),null,3)
+// });
 
 
 //Changing the database
@@ -211,37 +218,26 @@ function createID() {
   });
 }
 
-
 //Add new data to firebase
 function submitNameClick() {
-  var firebaseRef = firebase.database().ref();
+  var userID = auth.currentUser.uid;
+  var firebaseRef = firebase.database().ref('users/' + userID);
   var messageText = nameInput.value;
 
-  firebaseRef.child("text").set(messageText) //.push().
+  firebaseRef.update({
+    name: messageText
+  }); //.push().
 }
-//Retrieve data from firebase
-var firebaseName = document.getElementById("Name");
-
-var firebaseNameRef = firebase.database().ref().child("text")
-firebaseNameRef.on("value", function(datasnapshot) {
-  Name.innerText = datasnapshot.val();
-});
 
 function submitBeerClick() {
-  var firebaseRef = firebase.database().ref();
+  var userID = auth.currentUser.uid;
+  var firebaseRef = firebase.database().ref('users/' + userID);
   var messageText = beerInput.value;
 
-  firebaseRef.child("beers").set(messageText) //.push().
+  firebaseRef.update({
+    beer1: messageText
+  }); //.push().
 }
-
-//Retrieve data from firebase
-var firebaseBeers = document.getElementById("Beers");
-
-var firebaseNameRef = firebase.database().ref().child("beers")
-firebaseNameRef.on("value", function(datasnapshot) {
-  Beers.innerText = datasnapshot.val();
-  console.log("beerS", Beers.innerText)
-});
 
 //Retrieve data from firebase
 function printName(){
@@ -266,12 +262,3 @@ function printBeer(){
     console.log("beer: ", Beers.innerText);
   });
 }
-
-//Retrieve data from firebase
-var firebaseBeers = document.getElementById("Beers");
-
-var firebaseNameRef = firebase.database().ref().child("beers")
-firebaseNameRef.on("value", function(datasnapshot) {
-  Beers.innerText = datasnapshot.val();
-  console.log("beers", Beers.innerText)
-});

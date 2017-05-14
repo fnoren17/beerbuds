@@ -1,4 +1,3 @@
-
 var map;
 var markerwrap = document.getElementById("marker");
 markerwrap.index = 1;
