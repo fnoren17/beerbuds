@@ -92,6 +92,7 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
     document.getElementById("beerbudsIntro").style.display ="none";
     document.getElementById("profile").style.display = "block";
     document.getElementById("welcomeBack").style.display = "block";
+    document.getElementById("Name").style.display = "block";
 
     printName();
     printBeer();
@@ -106,6 +107,8 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
     document.getElementById("profile").style.display = "none";
     document.getElementById("beerbudsIntro").style.display ="block";
     document.getElementById("welcomeBack").style.display = "none";
+    document.getElementById("Name").style.display = "none";
+
 
 
 
@@ -213,14 +216,48 @@ function createID() {
   firebase.auth().onAuthStateChanged((firebaseUser) => {
     if (firebaseUser) {
       var userID = firebaseUser.uid;
+      fireBaseRef = firebase.database().ref('users/' + userID).child('name');
+      fireBaseRef.on("value", function(snapshot) {
+        if (!snapshot.val()) {
+          setNewUserData(userID);
+        }
+
+      else {
       firebase.database().ref('users/' + userID).set({
-        name: 'John Appleseed',
-        beer1: 'lager',
-        beer2: 'IPA',
-        beer3: 'APA',
-        bio: 'Hi I am John',
+        name: fireBaseRef.name,
+        beer1: fireBaseRef.beer1,
+        bio: fireBaseRef.bio,
         isActive: false
         });
+      }
+      });
+    }
+  });
+}
+
+function setNewUserData(userID) {
+  $("#page1").hide();
+  $("#navbar").hide();
+  document.getElementById("page5").style.display = "block";
+}
+
+function submitInfoClick() {
+    document.getElementById("submitInfoBtn").addEventListener("click", e => {
+    var name = nameInput.value;
+    var beer = beerInput.value;
+    if (!name || !beer) {
+      $("#errorMess").show();
+    }
+    else {
+      firebase.database().ref('users/' + userID).set({
+        name: name,
+        beer1: beer,
+        isActive: false
+        });
+      $("#errorMess").hide();
+      $("#page1").show();
+      $("#page5").hide();
+      $("#navbar").show();
     }
   });
 }

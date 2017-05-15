@@ -34,10 +34,11 @@
     </head>
     <body>
         <!--..............................................STARTSIDA......................................-->
+        <div class="header" id="flex" class="col-12" style="margin-top:30px;">
+            <h1><i class="fa fa-beer fa-2x"></i> BeerBuds</h1>
+        </div>
+
         <div class="container">
-            <div id="flex" class="col-12" style="margin-top:30px;">
-                <h1><i class="fa fa-beer fa-2x"></i> BeerBuds</h1>
-            </div>
             <div class id="page1">
                     <div class="page-content">
                         <div class="page">
@@ -113,16 +114,24 @@
                     <button style="margin-bottom: 90px;" id = "submitBeerBtn" class="btn btn-action" style="display:block"  onclick="submitBeerClick()">Submit Beers</button><br/>
                 </div>
             </div>
+
+            <div id="page5" style="display: none">
+                </br><h1>Please set some profile data before you continue to the application.</h1>
+                </br><input id = "nameInput" class="mdl-textfield__input" placeholder = "Set Name"/>
+                </br><input id = "beerInput" class="mdl-textfield__input" placeholder = "Set Beer"/> 
+                <div style="display:none;" id="errorMess">You have to fill in both name and favorite beer.</div>
+                <button id = "submitInfoBtn" class="btn btn-action" style="display:block"  onclick="submitInfoClick();">Submit Info</button>
+            </div>
     </div>
 
     <div id="navbar">
-        <div class="col-3">
+        <div style="border-right: solid; border-color: #ebebeb;" class="col-3">
             <a class="navBtn" targetpage="page1"><i class="fa fa-home fa-2x"></i></a>
         </div>
-        <div class="col-3">
+        <div style="border-right: solid; border-color: #ebebeb;" class="col-3">
             <a class="navBtn" targetpage="page2" onclick="populateFeed()"><i class="fa fa-feed fa-2x"></i></a>
         </div>
-        <div class="col-3">
+        <div style="border-right: solid; border-color: #ebebeb;" class="col-3">
             <a id="js-show-map" class="navBtn" targetpage="page3"><i class="fa fa-map fa-2x"></i></a>
         </div>
         <div class="col-3">
