@@ -212,6 +212,7 @@ var fileButton = document.getElementById("fileButton");
 
 //Create ID to database with your UUID
 var googleSignIn = document.getElementById("googleSignIn")
+
 function createID() {
   firebase.auth().onAuthStateChanged((firebaseUser) => {
     if (firebaseUser) {
@@ -243,13 +244,20 @@ function setNewUserData(userID) {
 
 function submitInfoClick() {
     document.getElementById("submitInfoBtn").addEventListener("click", e => {
-    var name = nameInput.value;
-    var beer = beerInput.value;
+    firstNameInput = document.getElementById("firstNameInput");
+    firstBeerInput = document.getElementById("firstBeerInput");
+    var name = firstNameInput.value;
+    console.log(name);
+    var beer = firstBeerInput.value;
+    console.log(beer);
     if (!name || !beer) {
       $("#errorMess").show();
     }
     else {
-      firebase.database().ref('users/' + userID).set({
+    firebase.auth().onAuthStateChanged((firebaseUser) => {
+      if (firebaseUser) {
+
+      firebase.database().ref('users/' + firebaseUser.uid).set({
         name: name,
         beer1: beer,
         isActive: false
@@ -260,6 +268,8 @@ function submitInfoClick() {
       $("#navbar").show();
     }
   });
+}
+});
 }
 
 //Add new data to firebase
@@ -276,7 +286,7 @@ function submitNameClick() {
 function submitBeerClick() {
   var userID = auth.currentUser.uid;
   var firebaseRef = firebase.database().ref('users/' + userID);
-  var messageText = beer1Input.value;
+  var messageText = beerInput.value;
 
   firebaseRef.update({
     beer1: messageText,
