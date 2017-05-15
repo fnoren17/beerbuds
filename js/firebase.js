@@ -30,7 +30,6 @@ function googleSignin() {
    }).catch(function(error) {
       var errorCode = error.code;
       var errorMessage = error.message;
-		
       // console.log(error.code)
       // console.log(error.message)
    });
@@ -174,34 +173,34 @@ var submitBeerBtn = document.getElementById("submitBeerBtn");
 var uploader = document.getElementById("uploader");
 var fileButton = document.getElementById("fileButton");
 
-fileButton.addEventListener("change", function(e){
-  //Get file
-  var file = e.target.files[0];
-  //console.log("firebasestorage: ", firebase.storage().ref("sweet_gifs/"));
-  console.log("firebase: ", firebase)
+// fileButton.addEventListener("change", function(e){
+//   //Get file
+//   var file = e.target.files[0];
+//   //console.log("firebasestorage: ", firebase.storage().ref("sweet_gifs/"));
+//   console.log("firebase: ", firebase)
 
-  //Create a storage ref
-  var storageRef = firebase.storage().ref("ProfilePic/").child(file.name);
+//   //Create a storage ref
+//   var storageRef = firebase.storage().ref("ProfilePic/").child(file.name);
 
-  //Upload file
-  storageRef.put(file);
+//   //Upload file
+//   storageRef.put(file);
 
-  //Update progress bar
-  task.on("state_changed",
-    function progress(snapshot) {
-      var percentage = (snapshot.bytesTransferred / snapshot.totalBytes)*100;
-      uploader.value = percentage;
+//   //Update progress bar
+//   task.on("state_changed",
+//     function progress(snapshot) {
+//       var percentage = (snapshot.bytesTransferred / snapshot.totalBytes)*100;
+//       uploader.value = percentage;
 
-    },
+//     },
 
-    function error(err) {
+//     function error(err) {
 
-    },
-    function complete() {
+//     },
+//     function complete() {
 
-    }
-    );
-});
+//     }
+//     );
+// });
 
 
 
@@ -241,13 +240,9 @@ function submitBeerClick() {
   var userID = auth.currentUser.uid;
   var firebaseRef = firebase.database().ref('users/' + userID);
   var messageText = beer1Input.value;
-  var messageText2 = beer2Input.value;
-  var messageText3 = beer3Input.value;
 
   firebaseRef.update({
     beer1: messageText,
-    beer2: messageText2,
-    beer3: messageText3
   }); //.push().
 }
 
@@ -275,17 +270,5 @@ function printBeer(){
   firebaseNameRef.on("value", function(datasnapshot) {
     Beer1.innerText = datasnapshot.val();
     console.log("beer: ", Beer1.innerText);
-  });
-  var firebaseNameRef = firebase.database().ref('users/' + userID).child("beer2")
-  console.log("Ref: ",firebaseNameRef);
-  firebaseNameRef.on("value", function(datasnapshot) {
-    Beer2.innerText = datasnapshot.val();
-    console.log("beer: ", Beer2.innerText);
-  });
-  var firebaseNameRef = firebase.database().ref('users/' + userID).child("beer3")
-  console.log("Ref: ",firebaseNameRef);
-  firebaseNameRef.on("value", function(datasnapshot) {
-    Beer3.innerText = datasnapshot.val();
-    console.log("beer: ", Beer3.innerText);
   });
 }

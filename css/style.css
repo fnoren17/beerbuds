@@ -1,4 +1,9 @@
 html, body {
+  background: url("../img/Bubbles copy.jpg") no-repeat center center fixed transparent;
+  -webkit-background-size: cover;
+  -moz-background-size:cover;
+  -o-background-size: cover;
+  background-size:cover;
   height: 100%;
   margin: 0;
   padding: 0;
@@ -53,6 +58,7 @@ p {
 	padding-bottom: 20px;
 	align-items: center;
 	margin-bottom: 20px;
+  background-color: white;
 }
 
 #navbar {

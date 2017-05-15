@@ -41,9 +41,12 @@ beer.addEventListener('click',function(){
       });
     });
 });
+
 function initMap() {
-    map = new google.maps.Map(document.getElementById('map'), {
-      center: setCenter(),
+    var lat = 59.3473167232751;
+    var lng = 18.076280208767702;
+    var map = new google.maps.Map(document.getElementById('map'), {
+      center: ({lat:lat, lng:lng}),
       zoom: 17,
       disableDefaultUI: true
       });
@@ -76,5 +79,5 @@ function setCenter(){
 
 
 function handleLocationError(browserHasGeolocation, pos) {
-    alert('no geolocation');
+    alert("Can't get geolocation");
 }
