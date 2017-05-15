@@ -94,13 +94,19 @@
                     Dark Mode: <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-1">
                     <input type="checkbox" id="switch-1" class="mdl-switch__input" checked />
                     </div>
+
+                    <!--Input name-->
+                    <input id = "nameInput" class="mdl-textfield__input" placeholder = "Name"/> <button id = "submitNameBtn" class="btn btn-action" style="display:block"  onclick="submitNameClick(); alertfunc()"">Submit Name</button>
+                    <script> 
+                    function alertfunc() {
+                        alert("Name updated")
+                    }
+                    </script>
+
 <!--                     </br><h3>Name: </h3> -->
                     </br><h3>Favorite beertype: </h3><div id="Beer1"></div>  
                     </br><h3>Second favorite beertype: </h3><div id="Beer2"></div>  
                     </br><h3>Third favorite beertype: </h3><div id="Beer3"></div>  
-
-                    <!--Input name-->
-                    <!-- <input id = "nameInput" class="mdl-textfield__input" placeholder = "Name"/> <button id = "submitNameBtn" class="btn btn-action" style="display:block"  onclick="submitNameClick()">Submit Name</button> -->
 
                     <!--Input beer preference-->
                     </br></br><h1>Change your favorite beers</h1>
