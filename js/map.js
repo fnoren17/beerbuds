@@ -20,7 +20,8 @@ beer.addEventListener('click',function(){
     var lat = center.lat();
     var lng = center.lng();
     firebase.database().ref('users/' + userID).update({
-      position: {"lat":lat,"lng": lng}
+      position: {"lat":lat,"lng": lng},
+      isActive: true
     });
 
     deleteMarkers();
