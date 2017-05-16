@@ -295,8 +295,6 @@ function printName(){
 
 function printBeer(){
   var firebaseName = document.getElementById("Beer1");
-  var firebaseName = document.getElementById("Beer2");
-  var firebaseName = document.getElementById("Beer3");
   var userID = auth.currentUser.uid;
 
   var firebaseNameRef = firebase.database().ref('users/' + userID).child("beer1")

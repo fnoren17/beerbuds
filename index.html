@@ -40,27 +40,26 @@
 
         <div class="container">
             <div class id="page1">
+            <div class="containerDiv">
                     <div class="page-content">
                         <div class="page">
                             <p id="beerbudsIntro">Have you ever wanted to drink but all of your friends want to have a sober and boring day? Don't fear, there is more people in the town who wants to drink and they want YOU to join them for a son of a bitch or two.</p>
-                            <div id="welcomeBack">Welcome back to BeerBuds! Logged in as: </div> <b><div id="Name"></div></b>
+                            <div id="welcomeBack" style="text-align:center;">Welcome back to BeerBuds! Logged in as: </div> <b><div id="Name" style="text-align:center;"></div></b>
                         </div>
                     </div>
                 
-                <div class = "googleSignIn" id = "googleSignIn" style="display:block"></br>
+                <div id="flex">
+                <div class="googleSignIn" id="googleSignIn" style="display:block">
                         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="createID();googleSignin();">Sign In With Google</button>
                     </div>
 
                     <div id="profile" style="display: none">
-                        <div class="container" id="page1" style="font-family: 'Avenir Next';">
-                            <ul id="list"></ul>
-                            <!--.storage(). not working-->
-                            <!-- <progress value="0" max="100" id="uploader">0%</progress>
-                            <input type="file" value="upload" id="fileButton"/>
- -->
+                        <div id="page1" style="font-family: 'Avenir Next';">
                             <button id="btnLogout" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="display:none">Log out</button>
                         </div>
                     </div>
+                </div>
+            </div>
 
             </div>
             <div id="page2" style="display: none">
@@ -74,7 +73,7 @@
                 </div>
                 </div>
 
-            <div id="page3" style="display: none">
+            <div class="containerDiv" id="page3" style="display: none">
                 <h1>Map</h1>
                 <div id="map">
                     <div id="marker">
@@ -84,7 +83,7 @@
                 </br><p>Click the "I Want Beer" button to declare that you're thirsty for some good old brewski. You can then set the google maps marker to a place where you want to grab a beer (it will default to your current location). Other users can then see where you want to grab a beer.</p>
             </div>
 
-            <div id="page4" style="display: none">
+            <div class="containerDiv" id="page4" style="display: none">
                 </br><h1>Settings</h1>
                 <div id="settings">
                     <div id="marker">
@@ -93,7 +92,7 @@
                     </div>
 
                     <!--Input name-->
-                    </br><input id = "nameInput" class="mdl-textfield__input" placeholder = "Change Name"/> <button id = "submitNameBtn" class="btn btn-action" style="display:block"  onclick="submitNameClick(); alertfunc()"">Submit Name</button>
+                    </br><input id = "nameInput" class="mdl-textfield__input" placeholder = "Change Name"/> <button id = "submitNameBtn" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="display:block; margin-top:20px;" onclick="submitNameClick(); alertfunc()"">Submit Name</button>
                     <script> 
                     function alertfunc() {
                         alert("Name updated")
@@ -106,16 +105,16 @@
                     <!--Input beer preference-->
                     </br></br><h4>Change your favorite beer</h4>
                     <input id = "beer1Input" class="mdl-textfield__input" placeholder = "Favorite beer"/>
-                    <button style="margin-bottom: 90px;" id = "submitBeerBtn" class="btn btn-action" style="display:block"  onclick="submitBeerClick()">Submit Beers</button><br/>
+                    <button style="margin-bottom: 90px; display:block; margin-top:20px;" id="submitBeerBtn" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="submitBeerClick()">Submit Beers</button><br/>
                 </div>
             </div>
 
-            <div id="page5" style="display: none">
+            <div class="containerDiv" id="page5" style="display: none">
                 </br><h1>Please set some profile data before you continue to the application.</h1>
                 </br><input id="firstNameInput" class="mdl-textfield__input" placeholder = "Set Name"/>
                 </br><input id="firstBeerInput" class="mdl-textfield__input" placeholder = "Set Beer"/> 
                 <div style="display:none;" id="errorMess">You have to fill in both name and favorite beer.</div>
-                <button id = "submitInfoBtn" class="btn btn-action" style="display:block"  onclick="submitInfoClick();">Submit Info</button>
+                <button id = "submitInfoBtn" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="display:block" onclick="submitInfoClick();">Submit Info</button>
             </div>
             <div id="page6" style="display:none">
                 <h1>Map</h1>
@@ -154,6 +153,8 @@ async defer></script>
     shakeEvent.start();
     window.addEventListener('shake', function(){
         alert("Shaked");
+        var audio = new Audio('right.mp3');
+                audio.play();
     }, false);
 
     //stop listening

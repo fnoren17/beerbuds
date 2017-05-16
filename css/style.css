@@ -17,7 +17,6 @@ body {
 p {
  	font-size: 14px;	
     color: black;
-    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 }
 
 .page{
@@ -87,4 +86,14 @@ p {
 
 #navbar {
   display: none;
+}
+.containerDiv{
+  border-radius: 5px;
+  background:rgba(255, 255, 255, 0.7);
+  padding-right: 50px;
+  padding-left: 50px;
+  padding-top: 20px;
+  padding-bottom: 20px; 
+  margin-top:10px;
+  
 }
