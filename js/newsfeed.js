@@ -5,7 +5,12 @@ function populateFeed() {
 
 	var ref = firebase.database().ref("users/");
 	ref.orderByChild("isActive").equalTo(true).on("child_added", function(snapshot) {
-		snapshot.forEach(testfunc(snapshot));
+		try {
+			snapshot.forEach(testfunc(snapshot));
+		}
+		catch(err){
+			// console.log(err);
+		}
 	});
 
 }
@@ -14,13 +19,15 @@ function testfunc(snapshot) {
 	var lat = snapshot.child('position').val().lat;
 	var lng = snapshot.child('position').val().lng;
 	var name = snapshot.child('name').val();
+	var beer = snapshot.child('beer1').val();
 	var photoURL = snapshot.child('photoUrl').val();
 	if(!photoURL){
 		photoURL = 'http://www.clevelandheights.com/modules/showimage.aspx?imageid=601';
 	}
 
 	var firebaseName = document.getElementById("activeUsers");
-	firebaseName.innerHTML += '<div onclick="showPos(' + lat + ',' + lng + ',\''+ name+'\')" class="row" targetpage="page3" id="flex" style="border: 1px solid black; border-radius: 5px;"><div class="col-4"><img src="'+photoURL+'" id="profilepic" width="100px" height="100px"></img></div><div class="col-8" style="font-size: 10pt"><b>' + snapshot.child("name").val() + '</b> wants to get his drink on <i><br/><br/>Tap to see position</div></div>'
+	firebaseName.innerHTML += '<div onclick="showPos(' + lat + ',' + lng + ',\''+ name+'\')" class="row" targetpage="page3" id="flex" style="border: 1px solid black; border-radius: 5px;"><div class="col-4"><img src="'+photoURL+'" id="profilepic" width="100px" height="100px"></img></div><div class="col-8" style="font-size: 10pt"><b>' + snapshot.child("name").val() + '</b> wants to drink '+beer+'!<i><br/><br/>Tap to see position</div></div>'
+
 }
 
 function showPos(lat, lng, name) {

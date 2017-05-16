@@ -156,7 +156,7 @@ function createID() {
         setNewUserData(userID);
       }
       else {
-      console.log('loggar in???');
+      // console.log('loggar in???');
       firebase.database().ref('users/' + userID).update({
         isActive: false
         });
@@ -231,7 +231,7 @@ function printName(){
   console.log("Ref: ",firebaseNameRef);
   firebaseNameRef.on("value", function(datasnapshot) {
     Name.innerText = datasnapshot.val();
-    console.log("Name: ", Name.innerText);
+    // console.log("Name: ", Name.innerText);
   });
 }
 
@@ -244,6 +244,6 @@ function printBeer(){
   console.log("Ref: ",firebaseNameRef);
   firebaseNameRef.on("value", function(datasnapshot) {
     Beer1.innerText = datasnapshot.val();
-    console.log("beer: ", Beer1.innerText);
+    // console.log("beer: ", Beer1.innerText);
   });
 }
