@@ -46,12 +46,7 @@
                             <div id="welcomeBack">Welcome back to BeerBuds! Logged in as: </div> <b><div id="Name"></div></b>
                         </div>
                     </div>
-                <div id="emailpassSignIn" class="email/passSignIn">
-                    <input id=txtEmail class="mdl-textfield__input" type = "email" placeholder = "Email">
-                    <input id="txtPassword" class="mdl-textfield__input" type = "password" placeholder ="Password"></br>
-                    <button id="btnLogin" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Login</button>
-                    <button id="btnSignUp" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Sign Up</button>
-                </div>
+                
                 <div class = "googleSignIn" id = "googleSignIn" style="display:block"></br>
                         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="createID();googleSignin();">Sign In With Google</button>
                     </div>
@@ -151,5 +146,23 @@
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCn2-5FWdpedj1ktxvGM76HqCySwBUPOpI&callback=initMap"
 async defer></script>   
+
+<script type="text/javascript" src="https://cdn.rawgit.com/alexgibson/shake.js/master/shake.js"></script>
+<script>  
+    //listen to shake event
+    var shakeEvent = new Shake({threshold: 15});
+    shakeEvent.start();
+    window.addEventListener('shake', function(){
+        alert("Shaked");
+    }, false);
+
+    //stop listening
+    function stopShake(){
+        shakeEvent.stop();
+    }
+
+    //check if shake is supported or not.
+    if(!("ondevicemotion" in window)){alert("Not Supported");}
+</script>
 </body>   
 </html>
