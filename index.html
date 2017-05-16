@@ -152,7 +152,6 @@ async defer></script>
     var shakeEvent = new Shake({threshold: 15});
     shakeEvent.start();
     window.addEventListener('shake', function(){
-        alert("Shaked");
         var audio = new Audio('Soda Can Opening Sound Effect.mp3');
                 audio.play();
     }, false);
