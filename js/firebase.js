@@ -204,20 +204,16 @@ var googleSignIn = document.getElementById("googleSignIn")
 function createID() {
   firebase.auth().onAuthStateChanged((firebaseUser) => {
     if (firebaseUser) {
-      console.log(firebaseUser);
+      // console.log(firebaseUser);
       var userID = firebaseUser.uid;
       fireBaseRef = firebase.database().ref('users/' + userID).child('name');
       fireBaseRef.on("value", function(snapshot) {
-        if (!snapshot.val()) {
-          setNewUserData(userID);
-        }
-
+      if (!snapshot.val()) {
+        setNewUserData(userID);
+      }
       else {
-      firebase.database().ref('users/' + userID).set({
-        name: fireBaseRef.name,
-        beer1: fireBaseRef.beer1,
-        bio: fireBaseRef.bio,
-        photoUrl: fireBaseRef.photoUrl,
+      console.log('loggar in???');
+      firebase.database().ref('users/' + userID).update({
         isActive: false
         });
       }
