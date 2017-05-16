@@ -7,7 +7,7 @@ var beer = document.getElementById('beer');
 $(document).ready(function() {
     $('#js-show-map').click(function(event) {
           /* Act on the event */
-          console.log('jsshowmap');
+          // console.log('jsshowmap');
           google.maps.event.trigger(map, 'resize');
     });
 });
@@ -47,7 +47,7 @@ function initMap() {
       zoom: 17,
       disableDefaultUI: true
     });
-    map.controls[google.maps.ControlPosition.LEFT_TOP].push(markerwrap);
+    map.controls[google.maps.ControlPosition.TOP_CENTER].push(markerwrap);
 }
 
 function deleteMarkers() {
@@ -64,7 +64,7 @@ function setCenter(){
         lat: position.coords.latitude,
         lng: position.coords.longitude
       };
-      console.log(pos);
+      // console.log(pos);
       map.setCenter(pos);
     }, function() {
       handleLocationError(true, map.getCenter());

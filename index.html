@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width,initial-scale=1">
 
         <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-title" content="BeerBuds">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
 
@@ -38,7 +39,6 @@
         <div class="header" id="flex" class="col-12" style="margin-top:30px;">
             <h1><i class="fa fa-beer fa-2x"></i> BeerBuds</h1>
         </div>
-
         <div class="container">
             <div class id="page1">
             <div class="containerDiv">
@@ -80,7 +80,7 @@
                 <h1>Map</h1>
                 <div id="map">
                     <div id="marker">
-                    <button id="beer" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">I want beer!</button>
+                    <button id="beer" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent clickme">I want beer!</button>
                     </div>
                 </div>
                 </br><p>Click the "I Want Beer" button to declare that you're thirsty for some good old brewski. You can then set the google maps marker to a place where you want to grab a beer (it will default to your current location). Other users can then see where you want to grab a beer.</p>
@@ -89,11 +89,6 @@
             <div class="containerDiv" id="page4" style="display: none">
                 </br><h1>Settings</h1>
                 <div id="settings">
-                    <div id="marker">
-                    Dark Mode: <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-1">
-                    <input type="checkbox" id="switch-1" class="mdl-switch__input" checked />
-                    </div>
-
                     <!--Input name-->
                     </br><input id = "nameInput" class="mdl-textfield__input" placeholder = "Change Name"/> <button id = "submitNameBtn" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="display:block; margin-top:20px;" onclick="submitNameClick(); alertfunc()"">Submit Name</button>
                     <script> 
@@ -107,7 +102,7 @@
 
                     <!--Input beer preference-->
                     </br></br><h4>Change your favorite beer</h4>
-                    <input id = "beer1Input" class="mdl-textfield__input" placeholder = "Favorite beer"/>
+                    <input id="beer1Input" class="mdl-textfield__input" placeholder = "Favorite beer"/>
                     <button style="margin-bottom: 90px; display:block; margin-top:20px;" id="submitBeerBtn" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="submitBeerClick()">Submit Beers</button><br/>
                 </div>
             </div>
@@ -143,6 +138,33 @@
 
 
     <!--..............................................STARTSIDA SLUT.................................-->
+    <script>  
+
+    $(document).ready(function() {
+        //listen to shake event
+        var shakeEvent = new Shake({threshold: 15});
+        shakeEvent.start();
+
+        $('.clickme').click(function(event) {
+            /* Act on the event */
+            var audio = new Audio('Soda.mp3');
+            audio.play();
+
+            window.addEventListener('shake', function(){
+                audio.play();
+            }, false);
+        });;
+
+        //stop listening
+        function stopShake(){
+            shakeEvent.stop();
+        }
+    });
+
+    //check if shake is supported or not.
+    if(!("ondevicemotion" in window)){alert("Shake Recognition Not Supported");}
+</script>
+
     <script src="js/firebase.js"></script>
     <script src="js/main.js"></script> 
     <script src="js/map.js"></script>
@@ -152,22 +174,6 @@
 async defer></script>   
 
 <script type="text/javascript" src="https://cdn.rawgit.com/alexgibson/shake.js/master/shake.js"></script>
-<script>  
-    //listen to shake event
-    var shakeEvent = new Shake({threshold: 15});
-    shakeEvent.start();
-    window.addEventListener('shake', function(){
-        var audio = new Audio('Soda Can Opening Sound Effect.mp3');
-        audio.play();
-    }, false);
 
-    //stop listening
-    function stopShake(){
-        shakeEvent.stop();
-    }
-
-    //check if shake is supported or not.
-    if(!("ondevicemotion" in window)){alert("Shake Recognition Not Supported");}
-</script>
 </body>   
 </html>

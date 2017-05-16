@@ -20,7 +20,7 @@ function testfunc(snapshot) {
 	}
 
 	var firebaseName = document.getElementById("activeUsers");
-	firebaseName.innerHTML += '<div onclick="showPos(' + lat + ',' + lng + ',\''+ name+'\')" class="row" targetpage="page3" id="flex" style="border: 1px solid black; border-radius: 5px;"><div class="col-4"><img src="'+photoURL+'" id="profilepic" width="100px" height="100px"></img></div><div class="col-8" style="font-size: 10pt"><b>' + snapshot.child("name").val() + '</b> wants to get his drink on <i><br/>near Östermalmstorg</i><br/><br/>Swipe right to start chatting ></div></div>'
+	firebaseName.innerHTML += '<div onclick="showPos(' + lat + ',' + lng + ',\''+ name+'\')" class="row" targetpage="page3" id="flex" style="border: 1px solid black; border-radius: 5px;"><div class="col-4"><img src="'+photoURL+'" id="profilepic" width="100px" height="100px"></img></div><div class="col-8" style="font-size: 10pt"><b>' + snapshot.child("name").val() + '</b> wants to get his drink on <i><br/><br/>Tap to see position</div></div>'
 }
 
 function showPos(lat, lng, name) {

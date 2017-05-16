@@ -12,4 +12,3 @@
 		targetpage.show();
 		currentpage = targetpage;
 	}
-// });

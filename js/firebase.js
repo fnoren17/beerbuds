@@ -215,6 +215,7 @@ function submitNameClick() {
 function submitBeerClick() {
   var userID = auth.currentUser.uid;
   var firebaseRef = firebase.database().ref('users/' + userID);
+  var beerInput = document.getElementById('beer1Input');
   var messageText = beerInput.value;
 
   firebaseRef.update({
