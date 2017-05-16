@@ -55,28 +55,28 @@ var btnSignUp = document.getElementById("btnSignUp");
 var btnLogout = document.getElementById("btnLogout"); 
 
 
-//Add login event
-btnLogin.addEventListener("click", e => {
-	//get email and pass
-	var email = txtEmail.value;
-	var pass = txtPassword.value;
-	var auth = firebase.auth();
-	//sign in
-	var promise = auth.signInWithEmailAndPassword(email, pass);
-	promise.catch(e=> console.log(e.message));
+// //Add login event
+// btnLogin.addEventListener("click", e => {
+// 	//get email and pass
+// 	var email = txtEmail.value;
+// 	var pass = txtPassword.value;
+// 	var auth = firebase.auth();
+// 	//sign in
+// 	var promise = auth.signInWithEmailAndPassword(email, pass);
+// 	promise.catch(e=> console.log(e.message));
 
-});
+// });
 
-btnSignUp.addEventListener("click", e => {
-  //TODO check for real email
-  var email = txtEmail.value;
-  var pass = txtPassword.value;
-  var auth = firebase.auth();
-  //Sign in
-  var promise = auth.createUserWithEmailAndPassword(email, pass);
-  promise
-    .catch(e=> console.log(e.message));
-});
+// btnSignUp.addEventListener("click", e => {
+//   //TODO check for real email
+//   var email = txtEmail.value;
+//   var pass = txtPassword.value;
+//   var auth = firebase.auth();
+//   //Sign in
+//   var promise = auth.createUserWithEmailAndPassword(email, pass);
+//   promise
+//     .catch(e=> console.log(e.message));
+// });
 
 //Logout
 btnLogout.addEventListener("click", e =>{
@@ -88,7 +88,7 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
   if(firebaseUser){
     btnLogout.style.display = "block";
     document.getElementById("googleSignIn").style.display ="none";
-    document.getElementById("emailpassSignIn").style.display ="none";
+    // document.getElementById("emailpassSignIn").style.display ="none";
     document.getElementById("beerbudsIntro").style.display ="none";
     document.getElementById("profile").style.display = "block";
     document.getElementById("welcomeBack").style.display = "block";
@@ -103,7 +103,7 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
   } else {
     btnLogout.style.display = "none";
     document.getElementById("googleSignIn").style.display ="block";
-    document.getElementById("emailpassSignIn").style.display ="block";
+    // document.getElementById("emailpassSignIn").style.display ="block";
     document.getElementById("profile").style.display = "none";
     document.getElementById("beerbudsIntro").style.display ="block";
     document.getElementById("welcomeBack").style.display = "none";
@@ -244,8 +244,6 @@ function setNewUserData(userID) {
 
 function submitInfoClick() {
     document.getElementById("submitInfoBtn").addEventListener("click", e => {
-    firstNameInput = document.getElementById("firstNameInput");
-    firstBeerInput = document.getElementById("firstBeerInput");
     var name = firstNameInput.value;
     console.log(name);
     var beer = firstBeerInput.value;
