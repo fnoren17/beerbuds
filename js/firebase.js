@@ -204,7 +204,6 @@ var googleSignIn = document.getElementById("googleSignIn")
 function createID() {
   firebase.auth().onAuthStateChanged((firebaseUser) => {
     if (firebaseUser) {
-      // console.log(firebaseUser);
       var userID = firebaseUser.uid;
       fireBaseRef = firebase.database().ref('users/' + userID).child('name');
       fireBaseRef.on("value", function(snapshot) {
@@ -271,6 +270,7 @@ function submitNameClick() {
 function submitBeerClick() {
   var userID = auth.currentUser.uid;
   var firebaseRef = firebase.database().ref('users/' + userID);
+  var beerInput = document.getElementById('beer1Input');
   var messageText = beerInput.value;
 
   firebaseRef.update({

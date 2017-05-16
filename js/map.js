@@ -7,7 +7,7 @@ var beer = document.getElementById('beer');
 $(document).ready(function() {
     $('#js-show-map').click(function(event) {
           /* Act on the event */
-          console.log('jsshowmap');
+          // console.log('jsshowmap');
           google.maps.event.trigger(map, 'resize');
     });
 });
@@ -64,7 +64,7 @@ function setCenter(){
         lat: position.coords.latitude,
         lng: position.coords.longitude
       };
-      console.log(pos);
+      // console.log(pos);
       map.setCenter(pos);
     }, function() {
       handleLocationError(true, map.getCenter());
