@@ -47,7 +47,7 @@ function initMap() {
       zoom: 17,
       disableDefaultUI: true
     });
-    map.controls[google.maps.ControlPosition.LEFT_TOP].push(markerwrap);
+    map.controls[google.maps.ControlPosition.TOP_CENTER].push(markerwrap);
 }
 
 function deleteMarkers() {
