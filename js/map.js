@@ -46,8 +46,8 @@ function initMap() {
       center: setCenter(),
       zoom: 17,
       disableDefaultUI: true
-      });
-        map.controls[google.maps.ControlPosition.LEFT_TOP].push(markerwrap);
+    });
+    map.controls[google.maps.ControlPosition.LEFT_TOP].push(markerwrap);
 }
 
 function deleteMarkers() {
@@ -64,6 +64,7 @@ function setCenter(){
         lat: position.coords.latitude,
         lng: position.coords.longitude
       };
+      console.log(pos);
       map.setCenter(pos);
     }, function() {
       handleLocationError(true, map.getCenter());
