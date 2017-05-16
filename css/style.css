@@ -33,7 +33,8 @@ p {
 }
 
 
-#map {
+#map,
+#map_p6 {
   height: 300px;
   width: 100%;
 }
@@ -75,7 +76,8 @@ p {
   z-index: 999;
 }
 
-#page3 {
+#page3,
+#page4 {
   height: 100%;
 }
 
