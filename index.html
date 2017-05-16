@@ -30,7 +30,7 @@
         
         <!-- Fonts -->
         <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="/font-awesome-4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
     </head>
     <body>
         <!--..............................................STARTSIDA......................................-->
@@ -46,7 +46,6 @@
                             <div id="welcomeBack">Welcome back to BeerBuds! Logged in as: </div> <b><div id="Name"></div></b>
                         </div>
                     </div>
-                
                 <div class = "googleSignIn" id = "googleSignIn" style="display:block"></br>
                         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="createID();googleSignin();">Sign In With Google</button>
                     </div>
@@ -146,23 +145,5 @@
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCn2-5FWdpedj1ktxvGM76HqCySwBUPOpI&callback=initMap"
 async defer></script>   
-
-<script type="text/javascript" src="https://cdn.rawgit.com/alexgibson/shake.js/master/shake.js"></script>
-<script>  
-    //listen to shake event
-    var shakeEvent = new Shake({threshold: 15});
-    shakeEvent.start();
-    window.addEventListener('shake', function(){
-        alert("Shaked");
-    }, false);
-
-    //stop listening
-    function stopShake(){
-        shakeEvent.stop();
-    }
-
-    //check if shake is supported or not.
-    if(!("ondevicemotion" in window)){alert("Not Supported");}
-</script>
 </body>   
 </html>

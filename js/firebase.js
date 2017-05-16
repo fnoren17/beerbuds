@@ -12,6 +12,8 @@ firebase.initializeApp(config);
 //Login with google
 var provider = new firebase.auth.GoogleAuthProvider();
 
+// console.log(provider);
+
   var ref = firebase.database().ref("users");
   var users = [];
   ref.orderByKey().on("child_added", function(snapshot) {
