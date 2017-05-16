@@ -120,20 +120,6 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
 
 const auth = firebase.auth();
 
-function createID() {
-  firebase.auth().onAuthStateChanged((firebaseUser) => {
-    if (firebaseUser) {
-      // console.log(firebaseUser);
-      var userID = firebaseUser.uid;
-      firebase.database().ref('users/' + userID).update({
-        name: firebaseUser.displayName
-        // This is the only thing we need from go3ogle when logging in for the first time. 
-        // We can set the rest of the properties in profile page later.
-        });
-    }
-  });
-}
-
 
 var preObject = document.getElementById("object");
 var ulList = document.getElementById("list");
@@ -216,6 +202,7 @@ var googleSignIn = document.getElementById("googleSignIn")
 function createID() {
   firebase.auth().onAuthStateChanged((firebaseUser) => {
     if (firebaseUser) {
+      console.log(firebaseUser);
       var userID = firebaseUser.uid;
       fireBaseRef = firebase.database().ref('users/' + userID).child('name');
       fireBaseRef.on("value", function(snapshot) {
@@ -228,6 +215,7 @@ function createID() {
         name: fireBaseRef.name,
         beer1: fireBaseRef.beer1,
         bio: fireBaseRef.bio,
+        photoUrl: fireBaseRef.photoUrl,
         isActive: false
         });
       }
@@ -260,6 +248,7 @@ function submitInfoClick() {
       firebase.database().ref('users/' + firebaseUser.uid).set({
         name: name,
         beer1: beer,
+        photoUrl: firebaseUser.photoURL,
         isActive: false
         });
       $("#errorMess").hide();
