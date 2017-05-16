@@ -56,30 +56,6 @@ var btnLogin = document.getElementById("btnLogin");
 var btnSignUp = document.getElementById("btnSignUp");
 var btnLogout = document.getElementById("btnLogout"); 
 
-
-// //Add login event
-// btnLogin.addEventListener("click", e => {
-// 	//get email and pass
-// 	var email = txtEmail.value;
-// 	var pass = txtPassword.value;
-// 	var auth = firebase.auth();
-// 	//sign in
-// 	var promise = auth.signInWithEmailAndPassword(email, pass);
-// 	promise.catch(e=> console.log(e.message));
-
-// });
-
-// btnSignUp.addEventListener("click", e => {
-//   //TODO check for real email
-//   var email = txtEmail.value;
-//   var pass = txtPassword.value;
-//   var auth = firebase.auth();
-//   //Sign in
-//   var promise = auth.createUserWithEmailAndPassword(email, pass);
-//   promise
-//     .catch(e=> console.log(e.message));
-// });
-
 //Logout
 btnLogout.addEventListener("click", e =>{
   firebase.auth().signOut();
@@ -164,39 +140,6 @@ var submitBeerBtn = document.getElementById("submitBeerBtn");
 var uploader = document.getElementById("uploader");
 var fileButton = document.getElementById("fileButton");
 
-// fileButton.addEventListener("change", function(e){
-//   //Get file
-//   var file = e.target.files[0];
-//   //console.log("firebasestorage: ", firebase.storage().ref("sweet_gifs/"));
-//   console.log("firebase: ", firebase)
-
-//   //Create a storage ref
-//   var storageRef = firebase.storage().ref("ProfilePic/").child(file.name);
-
-//   //Upload file
-//   storageRef.put(file);
-
-//   //Update progress bar
-//   task.on("state_changed",
-//     function progress(snapshot) {
-//       var percentage = (snapshot.bytesTransferred / snapshot.totalBytes)*100;
-//       uploader.value = percentage;
-
-//     },
-
-//     function error(err) {
-
-//     },
-//     function complete() {
-
-//     }
-//     );
-// });
-
-
-
-//TODO skapa submitclick lägg in firebase.database().ref() med sitt id så det läggs till när
-// man skapar en användare med ett id. Sen kan all info länkas lätt till det specifika id:t när man loggar in
 
 //Create ID to database with your UUID
 var googleSignIn = document.getElementById("googleSignIn")
@@ -204,20 +147,17 @@ var googleSignIn = document.getElementById("googleSignIn")
 function createID() {
   firebase.auth().onAuthStateChanged((firebaseUser) => {
     if (firebaseUser) {
-      console.log(firebaseUser);
+      $('#profilePic').html("<img style='height:150px; width:150px; border-radius: 50%; border-style:solid; border-color:white; border-width:3px;' src=" + firebaseUser.photoURL + ">");
+      $('#profilePic').show();
       var userID = firebaseUser.uid;
       fireBaseRef = firebase.database().ref('users/' + userID).child('name');
       fireBaseRef.on("value", function(snapshot) {
-        if (!snapshot.val()) {
-          setNewUserData(userID);
-        }
-
+      if (!snapshot.val()) {
+        setNewUserData(userID);
+      }
       else {
-      firebase.database().ref('users/' + userID).set({
-        name: fireBaseRef.name,
-        beer1: fireBaseRef.beer1,
-        bio: fireBaseRef.bio,
-        photoUrl: fireBaseRef.photoUrl,
+      console.log('loggar in???');
+      firebase.database().ref('users/' + userID).update({
         isActive: false
         });
       }
@@ -235,15 +175,15 @@ function setNewUserData(userID) {
 function submitInfoClick() {
     document.getElementById("submitInfoBtn").addEventListener("click", e => {
     var name = firstNameInput.value;
-    console.log(name);
     var beer = firstBeerInput.value;
-    console.log(beer);
     if (!name || !beer) {
       $("#errorMess").show();
     }
     else {
     firebase.auth().onAuthStateChanged((firebaseUser) => {
       if (firebaseUser) {
+      $('#profilePic').html("<img style='height:150px; width:150px; border-radius: 50%; border-style:solid; border-color:white; border-width:3px;' src=" + firebaseUser.photoURL + ">");
+      $('#profilePic').show();
 
       firebase.database().ref('users/' + firebaseUser.uid).set({
         name: name,
