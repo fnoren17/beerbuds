@@ -1,4 +1,9 @@
 html, body {
+  background: url("../img/bg_opt.jpg") no-repeat center center fixed transparent;
+  -webkit-background-size: cover;
+  -moz-background-size:cover;
+  -o-background-size: cover;
+  background-size:cover;
   height: 100%;
   margin: 0;
   padding: 0;
@@ -6,12 +11,12 @@ html, body {
 body {
   font-family: Open-sans, sans-serif;
   font-size: 14px;
+  color: black;
 }
 
 p {
  	font-size: 14px;	
     color: black;
-    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 }
 
 .page{
@@ -27,8 +32,9 @@ p {
 }
 
 
-#map {
-  height: 100%;
+#map,
+#map_p6 {
+  height: 300px;
   width: 100%;
 }
 
@@ -39,10 +45,11 @@ p {
     border-color: white;
     border-width: 3px;
 }
+
 #flex {
 	display: flex;
-  	align-items: center;
-  	justify-content: center;
+  align-items: center;
+  justify-content: center;
 }
 
 .row {
@@ -51,6 +58,7 @@ p {
 	padding-bottom: 20px;
 	align-items: center;
 	margin-bottom: 20px;
+  background-color: white;
 }
 
 #navbar {
@@ -67,18 +75,25 @@ p {
   z-index: 999;
 }
 
-
-.demo-list-control {
-  width: 300px;
-}
-
-.demo-list-radio {
-  display: inline;
-}
-
-#page3 {
+#page3,
+#page4 {
   height: 100%;
 }
 
+.container {
+  margin-bottom: 75px;
+}
 
-/* Make the list of links take up the whole width of the nav */
+#navbar {
+  display: none;
+}
+.containerDiv{
+  border-radius: 5px;
+  background:rgba(255, 255, 255, 0.7);
+  padding-right: 50px;
+  padding-left: 50px;
+  padding-top: 20px;
+  padding-bottom: 20px; 
+  margin-top:10px;
+  
+}
