@@ -53,6 +53,7 @@ function showPos(lat, lng, name) {
 	showpage(targetpage);
 
 	google.maps.event.trigger(map2, 'resize');
+	map2.setCenter(pos);
 	// map2.controls[google.maps.ControlPosition.LEFT_TOP].push(markerwrap);
 	
 }

@@ -4,13 +4,14 @@ markerwrap.index = 1;
 var markers = [];
 var beer = document.getElementById('beer');
 
-$(document).ready(function() {
+// $(document).ready(function() {
     $('#js-show-map').click(function(event) {
           /* Act on the event */
           // console.log('jsshowmap');
+          setCenter();
           google.maps.event.trigger(map, 'resize');
     });
-});
+// });
   
 beer.addEventListener('click',function(){
     // Get user Id in order to update database
