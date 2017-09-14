@@ -247,3 +247,5 @@ function printBeer(){
     // console.log("beer: ", Beer1.innerText);
   });
 }
+
+//test
